@@ -1,0 +1,224 @@
+.startContainer {
+  display: block;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  width: 100%;
+  height: auto;
+
+  overflow: hidden;
+
+  z-index: 2;
+
+  .startContainer__wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    width: 100%;
+    height: auto;
+
+    position: relative;
+
+    .page-cover {
+      width: 100%;
+
+      color: #ffffff;
+      background-color: #1a1919;
+
+      font-style: normal;
+      font-weight: normal;
+      font-size: get-vw(13px, 1440);
+      font-family: var(--font-alt);
+
+      .first-text__block {
+        margin-top: get-vw(76px, 1440);
+      }
+      .second-text__block {
+        margin-bottom: get-vw(100px, 1440);
+      }
+      .standart-text__block {
+        font-size: get-vw(28px, 1440);
+        width: get-vw(941px, 1440);
+        margin-left: get-vw(90px, 1440);
+      }
+
+      .music-player__block {
+        display: flex;
+        flex-direction: column;
+
+        margin-top: get-vw(100px, 1440);
+        margin-bottom: get-vw(100px, 1440);
+        margin-left: get-vw(58px, 1440);
+        margin-right: get-vw(54px, 1440);
+
+        background: url(https://img.the-village.ru/WeorJW7oxBmQacHENHZ2ukJlgTblHHLnYaXeWrYVKCY/q:88/plain/2021/12/15/music-block-background.png)
+          no-repeat;
+        background-size: cover;
+
+        .music-player-header {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          .music-player-header-text {
+            position: relative;
+            margin-top: get-vw(61px, 1440);
+            margin-bottom: get-vw(61px, 1440);
+
+            line-height: get-vw(13px, 1440);
+            letter-spacing: get-vw(1px, 1440);
+            text-transform: uppercase;
+          }
+          .music-player-header-text::before {
+            display: block;
+            text-align: center;
+
+            top: get-vw(-16px, 1440);
+            left: get-vw(-84px, 1440);
+            position: absolute;
+
+            content: '';
+            height: get-vw(44px, 1440);
+            width: get-vw(44px, 1440);
+            background-repeat: no-repeat;
+            background-size: get-vw(44px, 1440) get-vw(44px, 1440);
+            background-image: url(https://cdn.the-village.ru/the-village.ru/2021/12/15/music-block__icon.svg);
+          }
+          .music-player-header-text::after {
+            display: block;
+            text-align: center;
+
+            top: get-vw(-16px, 1440);
+            right: get-vw(-84px, 1440);
+            position: absolute;
+
+            content: '';
+            height: get-vw(44px, 1440);
+            width: get-vw(44px, 1440);
+            background-repeat: no-repeat;
+            background-size: get-vw(44px, 1440) get-vw(44px, 1440);
+            background-image: url(https://cdn.the-village.ru/the-village.ru/2021/12/15/music-block__icon.svg);
+          }
+        }
+        .music-player-content {
+          display: flex;
+          flex-direction: row;
+          border-top: none;
+
+          .music-player-content__block {
+            position: relative;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 25%;
+            height: get-vw(540px, 1440);
+
+            border-right: 1px solid #ffffff;
+
+            .music-player-content-block-number {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              position: absolute;
+              top: get-vw(55px, 1440);
+              left: get-vw(134px, 1440);
+
+              line-height: get-vw(36px, 1440);
+              text-align: center;
+              letter-spacing: 1px;
+              text-transform: uppercase;
+              background: url(https://cdn.the-village.ru/the-village.ru/2021/12/15/track-indicator.svg)
+                no-repeat;
+              background-size: cover;
+              background-size: get-vw(60px, 1440) get-vw(60px, 1440);
+              width: get-vw(60px, 1440);
+              height: get-vw(60px, 1440);
+            }
+            .music-name {
+              margin-bottom: get-vw(30px, 1440);
+
+              font-weight: 500;
+              font-size: get-vw(20px, 1440);
+              line-height: get-vw(26px, 1440);
+              text-align: center;
+            }
+            .music-length {
+              line-height: get-vw(14px, 1440);
+              font-size: get-vw(13px, 1440);
+            }
+            .music__button {
+              width: get-vw(201px, 1440);
+              height: get-vw(50px, 1440);
+
+              position: absolute;
+              bottom: get-vw(55px, 1440);
+              left: get-vw(65px, 1440);
+
+              outline: none;
+              border: 1px solid #ffffff;
+              box-sizing: border-box;
+              border-radius: 100px;
+              background: none;
+
+              font-weight: 500;
+              font-size: get-vw(10px, 1440);
+              line-height: get-vw(36px, 1440);
+
+              text-align: center;
+              letter-spacing: 1px;
+              text-transform: uppercase;
+
+              color: #ffffff;
+            }
+          }
+          .music-player-content__block:nth-child(4) {
+            border-right: none;
+          }
+        }
+      }
+      .music-player__block > div {
+        border: 1px solid #ffffff;
+      }
+
+      .gel-wash-picture-cover {
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: get-vw(120.56px, 1440);
+        border: none;
+        background: url(https://img.the-village.ru/DvVu47D-CwLNMWLfFAGaEjpo4QzvRhzlp85QZGSgmks/q:88/plain/2021/12/15/gel-wash-picture.png)
+          no-repeat;
+        background-size: cover;
+        width: get-vw(960px, 1440);
+        height: get-vw(540.44px, 1440);
+      }
+      .gel-wash-picture-cover::before {
+        top: 41%;
+        left: get-vw(-143px, 1440);
+        content: '';
+        height: get-vw(93px, 1440);
+        width: get-vw(73px, 1440);
+        position: absolute;
+        background: url(https://cdn.the-village.ru/the-village.ru/2021/12/15/gel-wash-icon.svg)
+          no-repeat;
+        background-size: cover;
+      }
+      .gel-wash-picture-cover::after {
+        top: 41%;
+        right: get-vw(-143px, 1440);
+        content: '';
+        height: get-vw(93px, 1440);
+        width: get-vw(73px, 1440);
+        position: absolute;
+        background: url(https://cdn.the-village.ru/the-village.ru/2021/12/15/gel-wash-icon.svg)
+          no-repeat;
+        background-size: cover;
+      }
+    }
+  }
+}
