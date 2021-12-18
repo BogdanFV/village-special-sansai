@@ -219,19 +219,38 @@
       // END
     }
 
+    let meditationItems = [
+      ...meditationsContainer.querySelectorAll(
+        'meditationsContainer__meditation',
+      ),
+    ];
+
     function showSubs(indexOfAudio) {
       // В этой функции мы настраиваем отоюражение субтитров
       let audio = audios[indexOfAudio],
         audio__currentTime = audio.currentTime;
 
+      let subsContainer = meditationsContainer.querySelector(
+        `.meditationsContainer__meditation[data-index='${indexOfAudio}'] .player__texts[data-text]`,
+      );
+      let currentIndexOfSub = 0;
+
       switch (indexOfAudio) {
         case 0: //Если аудио №1, то контролим отображение субтитров
-          if (audio__currentTime >= 0 && audio__currentTime <= 5) {
-            // Если мы находимся на промежутке от 0 до 5 сек
+          if (audio__currentTime >= 0 && audio__currentTime <= 10) {
+            // Если мы находимся на промежутке от 0 до 10 сек
+            currentIndexOfSub = 0;
             // отображаем где-то такой-то текст
+          } else if (audio__currentTime >= 10 && audio__currentTime <= 15) {
+            currentIndexOfSub = 1;
+          } else {
+            currentIndexOfSub = 2;
           }
+
           break;
       }
+
+      subsContainer.setAttribute('data-text', currentIndexOfSub);
     }
   }
 
