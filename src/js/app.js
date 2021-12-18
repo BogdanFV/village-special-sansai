@@ -34,7 +34,31 @@
     let seeksliders = [...postContainer.querySelectorAll('.post__seekslider')];
     // END
 
+    // получаем карточки с главного меню
+    let itemsToOpenLandingMeditation = [
+        ...postContainer.querySelectorAll('.openLandingMeditation'),
+      ],
+      itemsToStartMeditation = [
+        ...postContainer.querySelectorAll('.openLandingMeditation'),
+      ];
+
     // Add Event Handling
+    itemsToOpenLandingMeditation.forEach((itemToOpenLandingMeditation) => {
+      // playbtn.addEventListener("click", playPause);
+      configOfEventListeners(false, {
+        target: itemToOpenLandingMeditation,
+        type: 'click',
+        func: goToMeditationLanding,
+      }); // вешаем ивентлистнер правильно
+    });
+    itemsToStartMeditation.forEach((itemToStartMeditation) => {
+      // playbtn.addEventListener("click", playPause);
+      configOfEventListeners(false, {
+        target: itemToStartMeditation,
+        type: 'click',
+        func: startMeditation,
+      }); // вешаем ивентлистнер правильно
+    });
     // Тк кнопок/инпутов/аудио у тебя будет несколько, проходимся по массиву из них  и всем вешаем ивентлистнеры
     playbtns.forEach((playbtn) => {
       // playbtn.addEventListener("click", playPause);
@@ -73,6 +97,19 @@
     // END
 
     // Functions
+    // Контрлим переход к посадочной страницы медетации
+    function goToMeditationLanding(event) {
+      let target = event.currentTarget,
+        target__index = target.getAttribute('data-meditation-landing-index');
+    }
+    // END
+    // Контролим переход с самой странице медетации
+    function startMeditation(event) {
+      let target = event.currentTarget,
+        target__index = target.getAttribute('data-meditation-index');
+    }
+    // END
+
     function playPause(event) {
       let target = event.currentTarget,
         target__index = target.getAttribute('data-audio-index'); // У каждой кнопки плея в дата аттрибуте лежит индекс аудио за которое она отвечает
