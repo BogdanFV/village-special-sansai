@@ -1,4 +1,4 @@
-<div class="meditationContainer meditationContainer_1">
+<div class="meditationsContainer__meditation" data-index='0'>
   <div id="first-info-block" class="music-block">
     <div class="music-block-main-part">
       <div class="music-block-main-part-header">Практика для сияния изнутри и снаружи</div>
@@ -12,12 +12,12 @@
         благодаря чему она приобретает свежий и отдохнувший вид. Шелк Koishimaru Royal в
         составе стимулирует выработку гиалуроновой кислоты и замедляет возрастные изменения кожи.
       </div>
-      <button id="first-sound-button" class="music__button startMeditation" data-meditation-index='0'
-        onclick="document.getElementById('first-info-block').style='display: none';
-                  document.getElementById('first-music-player').style='display: flex';">
 
+      <!-- Тут была штука с инлайном ивентов, я ее унес в js и css -->
+        <button id="first-sound-button" class="music__button startMeditation">
         Начать медитацию
       </button>
+      <!-- END -->
     </div>
     <div class="music-block-additional-part">
       <div class="music-block-additional-part-icon"></div>
@@ -32,12 +32,12 @@
   </div>
 
 
-  <div id="first-music-player" class="current-music-player">
+  <div id="first-music-player" class="meditationMusicPlayer current-music-player">
     <div class="music-player-icon first-player-icon"></div>
     <div class="music-player-icon second-player-icon"></div>
 
-    <button id="mutebtn" class="post__mutebtn current-music-player__button" data-audio-index='0'></button>
     <button id="playpausebtn" class="post__playpausebtn current-music-player__button" data-audio-index='0'></button>
+    <button id="mutebtn" class="post__mutebtn current-music-player__button" data-audio-index='0'></button>
 
     <input class="post__seekslider" id="seekslider" type="range" min="0" max="100" value="0" step="1" data-audio-index='0'>
 

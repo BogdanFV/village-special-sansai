@@ -1,4 +1,4 @@
-<div class="meditationContainer meditationContainer_2">
+<div class="meditationsContainer__meditation" data-index='1'>
   <div id="second-info-block" class="music-block">
     <div class="music-block-main-part">
       <div class="music-block-main-part-header">Утренняя медитация для уверенности в себе</div>
@@ -11,11 +11,12 @@
         Он нежно покрывает кожу шелковой увлажняющей вуалью и защищает ее от воздействия окружающей среды.
         Так же, как и медитация, сохраняет вас от влияния других людей.
       </div>
-      <button id="second-sound-button" class="music__button startMeditation" data-meditation-index='1'
-          onclick="document.getElementById('second-info-block').style='display: none';
-                    document.getElementById('second-music-player').style='display: flex';">
+
+      <!-- Тут была штука с инлайном ивентов, я ее унес в js и css -->
+        <button id="second-sound-button" class="music__button startMeditation">
         Начать медитацию
       </button>
+      <!-- END -->
     </div>
     <div class="music-block-additional-part">
       <div class="music-block-additional-part-icon"></div>

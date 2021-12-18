@@ -1,0 +1,154 @@
+.music-player__block {
+  display: flex;
+  flex-direction: column;
+  width: get-vw(1330px, 1440);
+
+  margin-left: auto;
+  margin-right: auto;
+
+  background: url(https://img.the-village.ru/WeorJW7oxBmQacHENHZ2ukJlgTblHHLnYaXeWrYVKCY/q:88/plain/2021/12/15/music-block-background.png)
+    no-repeat;
+  background-size: cover;
+
+  &.openMeditation {
+    display: none;
+  }
+
+  .music-player-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .music-player-header-text {
+      position: relative;
+      margin-top: get-vw(61px, 1440);
+      margin-bottom: get-vw(61px, 1440);
+
+      line-height: get-vw(13px, 1440);
+      letter-spacing: get-vw(1px, 1440);
+      text-transform: uppercase;
+    }
+    .music-player-header-text::before {
+      display: block;
+      text-align: center;
+
+      top: get-vw(-16px, 1440);
+      left: get-vw(-84px, 1440);
+      position: absolute;
+
+      content: '';
+      height: get-vw(44px, 1440);
+      width: get-vw(44px, 1440);
+      background-repeat: no-repeat;
+      background-size: get-vw(44px, 1440) get-vw(44px, 1440);
+      background-image: url(https://cdn.the-village.ru/the-village.ru/2021/12/15/music-block__icon.svg);
+    }
+    .music-player-header-text::after {
+      display: block;
+      text-align: center;
+
+      top: get-vw(-16px, 1440);
+      right: get-vw(-84px, 1440);
+      position: absolute;
+
+      content: '';
+      height: get-vw(44px, 1440);
+      width: get-vw(44px, 1440);
+      background-repeat: no-repeat;
+      background-size: get-vw(44px, 1440) get-vw(44px, 1440);
+      background-image: url(https://cdn.the-village.ru/the-village.ru/2021/12/15/music-block__icon.svg);
+    }
+  }
+  .music-player-content {
+    display: flex;
+    flex-direction: row;
+
+    .music-player-content__block {
+      position: relative;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 25%;
+      height: get-vw(540px, 1440);
+
+      border-top: 1px solid #ffffff;
+      border-right: 1px solid #ffffff;
+
+      .music-player-content-block-number {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        position: absolute;
+
+        top: get-vw(55px, 1440);
+        left: get-vw(134px, 1440);
+        width: get-vw(60px, 1440);
+        height: get-vw(60px, 1440);
+
+        line-height: get-vw(36px, 1440);
+        text-align: center;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border: 1px solid #ffffff;
+        border-radius: get-vw(100px, 1440);
+      }
+      .music-name {
+        margin-bottom: get-vw(30px, 1440);
+        text-align: center;
+
+        font-weight: 500;
+        font-size: get-vw(20px, 1440);
+        line-height: get-vw(26px, 1440);
+      }
+      .music-length {
+        line-height: get-vw(14px, 1440);
+        font-size: get-vw(13px, 1440);
+      }
+      .music__button {
+        width: get-vw(201px, 1440);
+        height: get-vw(50px, 1440);
+
+        position: absolute;
+        bottom: get-vw(55px, 1440);
+        left: get-vw(65px, 1440);
+
+        outline: none;
+        border: 1px solid #ffffff;
+        box-sizing: border-box;
+        border-radius: 100px;
+        background: none;
+
+        font-weight: 500;
+        font-size: get-vw(10px, 1440);
+        line-height: get-vw(36px, 1440);
+
+        text-align: center;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+
+        color: #ffffff;
+      }
+    }
+    .music-player-content__block:nth-child(4) {
+      border-right: none;
+    }
+  }
+  .music-player-content > div:hover {
+    background: rgba(26, 25, 25, 0.7);
+  }
+  .music-player-content > div:hover .music-player-content-block-number {
+    background-color: #ffffff;
+    color: #1a1919;
+  }
+  .music-player-content > div:hover .music__button {
+    background-color: #ffffff;
+    color: #1a1919;
+
+    cursor: pointer;
+  }
+}

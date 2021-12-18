@@ -10,17 +10,19 @@
       </div>
 
       <div class="content-cover">
+        <!-- Добавил playsinline – аттрибут необходимый для работы автоплея в ios -->
         <video class="video" loop="loop" autoplay="" muted="" playsinline>
           <source src="https://cdn.the-village.ru/the-village.ru/assets/sensai-1403/video_0_desk.mp4"
             type="video/mp4" />
         </video>
+        <!-- END -->
 
-        <include src="src/partials/content/menu.html"></include>
+        <!-- Разбил код на части, чтобы было удобнее его изменять в будущем -->
+          <include src="src/partials/content/menu/container.html"></include>
 
-        <include src="src/partials/content/meditation_1.html"></include>
-        <include src="src/partials/content/meditation_1.html"></include>
-        <include src="src/partials/content/meditation_1.html"></include>
-        <include src="src/partials/content/meditation_1.html"></include>
+
+          <include src="src/partials/content/meditations/container.html"></include>
+        <!-- END -->
       </div>
 
       <div class="standart-text__block second-text__block">
@@ -35,11 +37,15 @@
       <div class="gel-wash-picture-cover"></div>
     </div>
   </div>
+
+
+
+
+  <!-- Я перенес загрузку аудио из js в html, чтобы они начали грузится быстрее, и не было конфликтов в разных браузерах -->
+    <audio class="post__audio" data-index='0'>
+      <source src="https://cdn.the-village.ru/the-village.ru/assets/sensai-1403/audio_1.mp3" type="audio/mpeg" quality="high"/>
+    </audio>
+  <!-- END -->
 </div>
 
 
-<!-- Я перенес загрузку аудио из js в html, чтобы они начали грузится быстрее, и не было конфликтов в разных браузерах -->
-  <audio class="post__audio" data-index='0'>
-    <source src="https://cdn.the-village.ru/the-village.ru/assets/sensai-1403/audio_1.mp3" type="audio/mpeg" quality="high"/>
-  </audio>
-<!-- END -->

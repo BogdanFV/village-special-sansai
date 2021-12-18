@@ -1,4 +1,4 @@
-<div class="meditationContainer meditationContainer_4">
+<div class="meditationsContainer__meditation" data-index='3'>
   <div id="fourth-info-block" class="music-block">
     <div class="music-block-main-part">
       <div class="music-block-main-part-header">Практика, чтобы погрузиться в состояние «здесь и сейчас»</div>
@@ -14,12 +14,10 @@
         Оставьте настоящую себя и наградите ее добротой за заботу о себе.
 
       </div>
-      <!-- Вот эта штука с инлайном иветнов это очень не хорошо, в js подготовил функцию для этого, унеси это туда -->
-        <button id="second-sound-button" class="music__button startMeditation" data-meditation-index='3'
-        onclick="document.getElementById('fourth-info-block').style='display: none';
-                  document.getElementById('fourth-music-player').style='display: flex';">
-          Начать медитацию
-        </button>
+      <!-- Тут была штука с инлайном ивентов, я ее унес в js и css -->
+        <button id="fourth-sound-button" class="music__button startMeditation">
+        Начать медитацию
+      </button>
       <!-- END -->
     </div>
     <div class="music-block-additional-part">

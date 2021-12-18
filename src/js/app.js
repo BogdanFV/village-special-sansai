@@ -23,6 +23,9 @@
     // Тут начинается твой js-код
     let postContainer = document.querySelector('.startContainer');
 
+    let menuContainer = document.querySelector('.menuContainer'),
+      meditationsContainer = document.querySelector('.meditationsContainer');
+
     /* немного другие дал названия классам,
        тк надо повыситьь оригинальность этих элементов, чтобы не было кейсов с найдеными похожими эдементами на странице
     */
@@ -39,7 +42,7 @@
         ...postContainer.querySelectorAll('.openLandingMeditation'),
       ],
       itemsToStartMeditation = [
-        ...postContainer.querySelectorAll('.openLandingMeditation'),
+        ...postContainer.querySelectorAll('.startMeditation'),
       ];
 
     // Add Event Handling
@@ -97,16 +100,18 @@
     // END
 
     // Functions
-    // Контрлим переход к посадочной страницы медетации
+    // Контрлим переход к посадочной страницы медитации
     function goToMeditationLanding(event) {
       let target = event.currentTarget,
-        target__index = target.getAttribute('data-meditation-landing-index');
+        target__index = target.getAttribute('data-meditation-index');
+
+      menuContainer.classList.add('openMeditation');
+      meditationsContainer.setAttribute('data-meditation', target__index);
     }
     // END
-    // Контролим переход с самой странице медетации
+    // Контролим переход с самой странице медитации
     function startMeditation(event) {
-      let target = event.currentTarget,
-        target__index = target.getAttribute('data-meditation-index');
+      meditationsContainer.classList.add('startMeditation');
     }
     // END
 
@@ -115,6 +120,7 @@
         target__index = target.getAttribute('data-audio-index'); // У каждой кнопки плея в дата аттрибуте лежит индекс аудио за которое она отвечает
 
       let audio = audios[target__index];
+      console.log(target, audio, audios);
 
       if (audio.paused) {
         audio.play();
@@ -150,8 +156,9 @@
 
       let audio = audios[target__index];
 
-      if (audio.muted) {
-        audio.muted = false;
+      if (audio.volume == 1) {
+        // Заменил muted на volume, тк в сафари возникают конфликты с мутед этим
+        audio.volume = 0;
 
         console.log('Мут аудио №' + target__index);
 
@@ -160,11 +167,12 @@
            ваще всегда старайся уносить всякие css штуки в css, так код и рендер быстрее будет работать
         */
         target.style.background =
-          'url(https://cdn.the-village.ru/the-village.ru/2021/12/17/unmuted-btn.svg) center no-repeat';
+          'url(https://cdn.the-village.ru/the-village.ru/2021/12/17/sound-btn_0.svg) center no-repeat';
         target.style.backgroundSize = '100% 100%';
         // END
       } else {
-        audio.muted = true;
+        // Заменил muted на volume, тк в сафари возникают конфликты с мутед этим
+        audio.volume = 1;
 
         console.log('Демут аудио №' + target__index);
 
@@ -173,7 +181,7 @@
            ваще всегда старайся уносить всякие css штуки в css, так код и рендер быстрее будет работать
         */
         target.style.background =
-          'url(https://cdn.the-village.ru/the-village.ru/2021/12/17/sound-btn_0.svg) center no-repeat';
+          'url(https://cdn.the-village.ru/the-village.ru/2021/12/17/unmuted-btn.svg) center no-repeat';
         target.style.backgroundSize = '100% 100%';
         // END
       }
@@ -196,6 +204,15 @@
       // в этой функции мы трекаем изменение currentTime у аудио
       let target = event.currentTarget,
         target__index = audios.indexOf(target);
+
+      // Тут собираем инфу для изменения инпута по мере прослушивания
+      let target__currentTime = target.currentTime,
+        target__duration = target.duration;
+
+      let neededValueForInput = (target__currentTime * 100) / target__duration;
+
+      seeksliders[target__index].value = neededValueForInput;
+      // END
 
       // Тут надо ебаться с настройкой отоюражения этих текстовых-блоков-субтитров
       showSubs(target__index);

@@ -1,4 +1,4 @@
-<div class="meditationContainer meditationContainer_3">
+<div class="meditationsContainer__meditation" data-index='2'>
   <div id="third-info-block" class="music-block">
     <div class="music-block-main-part">
       <div class="music-block-main-part-header">Вечерняя медитация для возвращения к себе и своим желаниям</div>
@@ -13,11 +13,11 @@
         способствует естественному восстановлению клеток, благодаря чему со временем ваша кожа будет
         выглядеть более свежей и подтянутой.
       </div>
-      <button id="first-sound-button" class="music__button startMeditation" data-meditation-index='2'
-      onclick="document.getElementById('third-info-block').style='display: none';
-                document.getElementById('third-music-player').style='display: flex';">
+      <!-- Тут была штука с инлайном ивентов, я ее унес в js и css -->
+        <button id="third-sound-button" class="music__button startMeditation">
         Начать медитацию
       </button>
+      <!-- END -->
     </div>
     <div class="music-block-additional-part">
       <div class="music-block-additional-part-icon"></div>

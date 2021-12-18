@@ -1,0 +1,246 @@
+.meditationsContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  width: 100%;
+
+  .meditationsContainer__meditation {
+    display: none;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    width: 100%;
+  }
+
+  &.startMeditation {
+    .meditationMusicPlayer {
+      display: flex;
+    }
+    .music-block {
+      display: none;
+    }
+  }
+
+  @for $i from 0 through 10 {
+    &[data-meditation='#{$i}'] {
+      .meditationsContainer__meditation[data-index='#{$i}'] {
+        display: flex;
+      }
+    }
+  }
+}
+
+.music-block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: get-vw(1330px, 1440);
+  margin-left: auto;
+  margin-right: auto;
+
+  position: absolute;
+
+  background: rgba(26, 25, 25, 0.4);
+
+  .music-block-main-part {
+    margin-top: get-vw(124px, 1440);
+    margin-left: get-vw(95px, 1440);
+
+    .music-block-main-part-header {
+      margin-bottom: get-vw(34px, 1440);
+
+      font-weight: 500;
+      font-size: get-vw(20px, 1440);
+      line-height: get-vw(26px, 1440);
+    }
+    .music-block-main-part-text {
+      margin-bottom: get-vw(57px, 1440);
+      width: get-vw(640px, 1440);
+
+      font-weight: normal;
+      font-size: get-vw(17px, 1440);
+      line-height: get-vw(26px, 1440);
+    }
+    .music__button {
+      margin-bottom: get-vw(124px, 1440);
+      width: get-vw(201px, 1440);
+      height: get-vw(50px, 1440);
+
+      outline: none;
+      border: 1px solid #ffffff;
+      box-sizing: border-box;
+      border-radius: get-vw(100px, 1440);
+      background: none;
+
+      font-weight: 500;
+      font-size: get-vw(10px, 1440);
+      line-height: get-vw(36px, 1440);
+
+      text-align: center;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+
+      color: #ffffff;
+    }
+    .music__button:hover {
+      cursor: pointer;
+      background-color: #ffffff;
+      color: #1a1919;
+    }
+  }
+  .music-block-additional-part {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-left: get-vw(202px, 1440);
+
+    .music-block-additional-part-cover {
+      position: relative;
+      margin-top: get-vw(30px, 1440);
+      margin-bottom: get-vw(30px, 1440);
+
+      width: get-vw(263px, 1440);
+      height: get-vw(427px, 1440);
+
+      border: get-vw(1px, 1440) solid #ffffff;
+    }
+    .music-block-additional-part-cover video {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: get-vw(263px, 1440);
+      height: get-vw(427px, 1440);
+
+      box-sizing: border-box;
+      object-fit: cover;
+    }
+    .music-block-additional-part-icon {
+      height: get-vw(44px, 1440);
+      width: get-vw(44px, 1440);
+      background-repeat: no-repeat;
+      background-size: get-vw(44px, 1440) get-vw(44px, 1440);
+      background: url(https://cdn.the-village.ru/the-village.ru/2021/12/15/music-block__icon.svg)
+        no-repeat;
+      background-size: cover;
+    }
+  }
+}
+.meditationMusicPlayer {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: get-vw(1330px, 1440);
+  height: get-vw(675px, 1440);
+
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+
+  .music-player-text {
+    width: get-vw(620px, 1440);
+    font-size: get-vw(28px, 1440);
+    line-height: get-vw(36px, 1440);
+    text-align: center;
+    font-weight: normal;
+  }
+  .music-player-icon {
+    display: block;
+    text-align: center;
+    top: get-vw(315px, 1440);
+    position: absolute;
+    content: '';
+    height: get-vw(44px, 1440);
+    width: get-vw(44px, 1440);
+    background-repeat: no-repeat;
+    background-size: get-vw(44px, 1440) get-vw(44px, 1440);
+    background-image: url(https://cdn.the-village.ru/the-village.ru/2021/12/15/music-block__icon.svg);
+  }
+  .first-player-icon {
+    left: get-vw(34px, 1440);
+  }
+  .second-player-icon {
+    right: get-vw(34px, 1440);
+  }
+  .current-music-player__button {
+    width: get-vw(60px, 1440);
+    height: get-vw(60px, 1440);
+    position: absolute;
+    outline: none;
+
+    background: none;
+    outline: none;
+    border: 1px solid transparent;
+    box-shadow: none;
+    border-radius: get-vw(100px, 1440);
+    cursor: pointer;
+  }
+  #mutebtn {
+    top: get-vw(35px, 1440);
+    right: get-vw(35px, 1440);
+    background: url(https://cdn.the-village.ru/the-village.ru/2021/12/17/unmuted-btn.svg)
+      center no-repeat;
+    background-size: 100% 100%;
+  }
+  #playpausebtn {
+    margin-left: get-vw(-30px, 1440);
+    bottom: get-vw(67px, 1440);
+    left: 50%;
+    right: 50%;
+
+    background: url(https://cdn.the-village.ru/the-village.ru/2021/12/17/playbtn_1.svg)
+      center no-repeat;
+    background-size: 100% 100%;
+  }
+  #seekslider {
+    position: absolute;
+    margin: auto;
+    left: get-vw(355px, 1440);
+    bottom: get-vw(35px, 1440);
+    width: get-vw(620px, 1440);
+    height: get-vw(6px, 1440);
+
+    outline: none;
+    -webkit-appearance: none;
+    margin: 0px;
+    padding: 0px;
+    background: none;
+
+    border: 1px solid #ffffff;
+    box-sizing: border-box;
+    border-radius: 100px;
+  }
+  #seekslider::-ms-fill-lower {
+    background: none;
+  }
+  #seekslider::-ms-fill-upper {
+    background: none;
+  }
+  #seekslider::-moz-range-track {
+    background: none;
+  }
+  #seekslider::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    background: #ffffff;
+    width: get-vw(6px, 1440);
+    height: get-vw(6px, 1440);
+    border-radius: 100%;
+    cursor: pointer;
+  }
+  input[type='range']::-moz-range-thumb {
+    background: #ffffff;
+    width: get-vw(6px, 1440);
+    height: get-vw(6px, 1440);
+    border-radius: 100%;
+    cursor: pointer;
+  }
+  input[type='range']::-ms-thumb {
+    -webkit-appearance: none;
+    background: #ffffff;
+    width: get-vw(6px, 1440);
+    height: get-vw(6px, 1440);
+    border-radius: 100%;
+    cursor: pointer;
+  }
+}
