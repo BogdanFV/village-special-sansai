@@ -277,8 +277,21 @@ let configOfEventListeners = (function() {
 
 let swiper;
 
-initPostJs();
-
+if (document.readyState === 'loading') {
+  !window.location.href.includes('localhost')
+    ? configOfEventListeners(false, {
+        target: window,
+        type: 'LOCATION/PAGE_READY',
+        func: initPostJs,
+      })
+    : configOfEventListeners(false, {
+        target: window,
+        type: 'load',
+        func: initPostJs,
+      });
+} else {
+  initPostJs();
+}
 
 
 
