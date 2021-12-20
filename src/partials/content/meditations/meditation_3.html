@@ -14,7 +14,7 @@
         выглядеть более свежей и подтянутой.
       </div>
       <!-- Тут была штука с инлайном ивентов, я ее унес в js и css -->
-        <button id="third-sound-button" class="music__button startMeditation">
+      <button id="third-sound-button" class="music__button startMeditation">
         Начать медитацию
       </button>
       <!-- END -->
@@ -23,11 +23,109 @@
       <div class="music-block-additional-part-icon"></div>
       <div class="music-block-additional-part-cover">
         <video class="music-block-additional-part__video" loop="loop" autoplay="" muted="" playsinline>
-          <source src="https://cdn.the-village.ru/the-village.ru/assets/sensai-1403/video_2.mp4"
+          <source src="https://cdn.the-village.ru/the-village.ru/assets/sensai-1403/video_3.mp4"
             type="video/mp4" />
         </video>
       </div>
       <div class="music-block-additional-part-icon"></div>
+    </div>
+  </div>
+
+  <div id="third-music-player" class="meditationMusicPlayer current-music-player">
+    <div class="music-player-icon first-player-icon"></div>
+    <div class="music-player-icon second-player-icon"></div>
+
+    <button id="playpausebtn" class="post__playpausebtn current-music-player__button" data-audio-index='2'></button>
+    <button id="mutebtn" class="post__mutebtn current-music-player__button" data-audio-index='2'></button>
+
+    <input class="post__seekslider" id="seekslider" type="range" min="0" max="100" value="0" step="1" data-audio-index='2'>
+
+    <div class="player__texts" data-text='0'>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='0'>
+
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='1'>
+        Для начала, выключите свет. Вместо него можно зажечь свечи, поставив это аудио на паузу.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='2'>
+        Сядьте в удобное для вас положение. Закройте глаза.
+        Начните делать круговые движения шеей. В любом направлении, с любой скоростью.
+        Главное, чтобы вы слышали свое глубокое дыхание через нос.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='3'>
+        Остановитесь. Выпрямите шею. И потянитесь макушкой вверх. И ещё чуть выше.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='4'>
+        И снова чуть выше, вытягиваясь так, как будто вы готовы взлететь.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='5'>
+        Почувствуйте, как у грудной клетки и у живота становится больше пространства, чтобы дышать.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='6'>
+        Ощутите, как ноги и таз становятся тяжелее. А туловище и голова наоборот — легче.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='7'>
+        Расслабляется кожа головы.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='8'>
+        Волосы.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='9'>
+        Расслабляется лоб.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='10'>
+        Виски.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='11'>
+        Нижняя челюсть и язык под весом опускаются вниз.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='12'>
+        Фокус глаз направляется внутрь — во внутреннюю темноту.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='13'>
+        Веки, ресницы тяжелеют.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='14'>
+        Расслабляются мышцы шеи.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='15'>
+        Между позвонками появляется больше пространства.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='16'>
+        Плечи и руки становятся как будто невесомыми.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='17'>
+        Почувствуйте, как это плавное, мягкое расслабление возвращает вас к себе. К своему естественному дыханию.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='18'>
+        К спокойному выражению лица. К своим желаниям. К тому, что можно сейчас посвятить время не состоянию «надо», а состоянию «хочу».
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='19'>
+        Прислушайтесь к внутренним импульсам: что вы хотите и можете сделать для себя прямо сейчас?
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='20'>
+        Это может быть что-то простое: поменять позу, в которой вы находитесь, или принять ванну и после
+        нанести лосьон на влажную кожу, или записаться на массаж, который давно откладывали.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='21'>
+        Позвольте себе быть расслабленной и желать, что бы это ни было.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='22'>
+        Продолжайте прислушиваться к своим ощущениям.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='23'>
+        И оставайтесь в этой медитации столько, сколько вам необходимо.
+      </span>
+    </div>
+    <div id="audioSource"></div>
+  </div>
+
+  <div id="third-additional-container" class="additionalContainer">
+    <include class="test" src="src/partials/content/menu/item_3.html"></include>
+    <div class="additional-meditations__block">
+      <include class="test" src="src/partials/content/menu/item_1.html"></include>
+      <include class="test" src="src/partials/content/menu/item_2.html"></include>
+      <include class="test" src="src/partials/content/menu/item_4.html"></include>
     </div>
   </div>
 </div>

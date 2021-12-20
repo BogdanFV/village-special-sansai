@@ -1,46 +1,56 @@
-.music-player__block {
-  display: flex;
+.additionalContainer{
+  display: none;
   flex-direction: column;
-  width: get-vw(1330px, 1440);
+  height: 100%;
+  width: 100%;
 
-  margin-left: auto;
-  margin-right: auto;
+  position: absolute;
+  top: 0;
 
-
-  &.preloader-for-meditations {
-    display: block;
-
-    .preloader-indication{
-
-    }
-  }
-  &.openMeditation {
-    display: none;
-  }
-
-  .music-player-header {
+  color: white;
+  font-size: 18px;
+  .music-player-content__block{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
-    .music-player-header-text {
-      position: relative;
-      margin-top: get-vw(61px, 1440);
-      margin-bottom: get-vw(61px, 1440);
+    height: get-vw(362px, 1440);
 
-      line-height: get-vw(13px, 1440);
-      letter-spacing: get-vw(1px, 1440);
+    .music-player-content-block-number{
+      display: none;
+    }
+    .music-name {
+      display: none;
+    }
+    .music__button{
+      width: get-vw(201px, 1440);
+      height: get-vw(50px, 1440);
+
+
+      outline: none;
+      border: 1px solid #ffffff;
+      box-sizing: border-box;
+      border-radius: 100px;
+      background: none;
+      cursor: pointer;
+
+      font-weight: 500;
+      font-size: get-vw(10px, 1440);
+      line-height: get-vw(36px, 1440);
+
+      text-align: center;
+      letter-spacing: 1px;
       text-transform: uppercase;
+
+      color: #ffffff;
     }
-    .music-player-header-text::before {
+    .music-length{
+      display: none;
+    }
+    .music-player-icon {
       display: block;
       text-align: center;
-
-      top: get-vw(-16px, 1440);
-      left: get-vw(-84px, 1440);
-      position: absolute;
-
       content: '';
       height: get-vw(44px, 1440);
       width: get-vw(44px, 1440);
@@ -48,35 +58,34 @@
       background-size: get-vw(44px, 1440) get-vw(44px, 1440);
       background-image: url(https://cdn.the-village.ru/the-village.ru/2021/12/15/music-block__icon.svg);
     }
-    .music-player-header-text::after {
+    .finish-text{
       display: block;
+      width: get-vw(620px, 1440);
+
+      margin-top: get-vw(40px, 1440);
+      margin-bottom: get-vw(40px, 1440);
       text-align: center;
 
-      top: get-vw(-16px, 1440);
-      right: get-vw(-84px, 1440);
-      position: absolute;
-
-      content: '';
-      height: get-vw(44px, 1440);
-      width: get-vw(44px, 1440);
-      background-repeat: no-repeat;
-      background-size: get-vw(44px, 1440) get-vw(44px, 1440);
-      background-image: url(https://cdn.the-village.ru/the-village.ru/2021/12/15/music-block__icon.svg);
+      font-weight: 400;
+      font-size: get-vw(28px, 1440);
+      line-height: get-vw(36px, 1440);
     }
   }
-  .music-player-content {
+
+  .additional-meditations__block{
     display: flex;
     flex-direction: row;
+    height: get-vw(313px, 1440);
 
     .music-player-content__block {
-      position: relative;
 
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      width: 25%;
-      height: get-vw(540px, 1440);
+      width: get-vw(444px, 1440);
+      height: get-vw(313px, 1440);
+      position: relative;
 
       border-top: 1px solid #ffffff;
       border-right: 1px solid #ffffff;
@@ -89,11 +98,12 @@
 
         position: absolute;
 
-        top: get-vw(55px, 1440);
-        left: get-vw(134px, 1440);
+        top: get-vw(30px, 1440);
+        left: get-vw(192px, 1440);
         width: get-vw(60px, 1440);
         height: get-vw(60px, 1440);
 
+        font-size: get-vw(13px, 1440);
         line-height: get-vw(36px, 1440);
         text-align: center;
         letter-spacing: 1px;
@@ -102,15 +112,22 @@
         border-radius: get-vw(100px, 1440);
       }
       .music-name {
-        margin-bottom: get-vw(30px, 1440);
-        text-align: center;
+        display: block;
+        width: get-vw(404px, 1440);
+        height: get-vw(52px, 1440);
+
+        margin-bottom: get-vw(20px, 1440);
 
         font-weight: 500;
         font-size: get-vw(20px, 1440);
         line-height: get-vw(26px, 1440);
-      }
+        text-align: center;
 
-      .finish-text {
+      }
+      .finish-text{
+        display: none;
+      }
+      .music-player-icon{
         display: none;
       }
       .music-length {
@@ -122,14 +139,15 @@
         height: get-vw(50px, 1440);
 
         position: absolute;
-        bottom: get-vw(55px, 1440);
-        left: get-vw(65px, 1440);
+        bottom: get-vw(30px, 1440);
+        left: get-vw(122px, 1440);
 
         outline: none;
         border: 1px solid #ffffff;
         box-sizing: border-box;
         border-radius: 100px;
         background: none;
+        cursor: pointer;
 
         font-weight: 500;
         font-size: get-vw(10px, 1440);
@@ -142,24 +160,5 @@
         color: #ffffff;
       }
     }
-    .music-player-content__block:nth-child(4) {
-      border-right: none;
-    }
   }
-  .music-player-content > div:hover {
-    background: rgba(26, 25, 25, 0.7);
-  }
-  .music-player-content > div:hover .music-player-content-block-number {
-    background-color: #ffffff;
-    color: #1a1919;
-  }
-  .music-player-content > div:hover .music__button {
-    background-color: #ffffff;
-    color: #1a1919;
-
-    cursor: pointer;
-  }
-}
-.preloaded-for-meditations{
-  display: none;
 }

@@ -12,10 +12,9 @@
         Завершить практику стоит ритуалом очищения — смойте с себя нелюбовь,
         сомнения и предубеждения с помощью геля для умывания Sensai Clear Gel Wash.
         Оставьте настоящую себя и наградите ее добротой за заботу о себе.
-
       </div>
       <!-- Тут была штука с инлайном ивентов, я ее унес в js и css -->
-        <button id="fourth-sound-button" class="music__button startMeditation">
+      <button id="fourth-sound-button" class="music__button startMeditation">
         Начать медитацию
       </button>
       <!-- END -->
@@ -23,12 +22,134 @@
     <div class="music-block-additional-part">
       <div class="music-block-additional-part-icon"></div>
       <div class="music-block-additional-part-cover">
-        <video class="music-block-additional-part__video" loop="loop" autoplay="" muted="" playsinline>
-          <source src="https://cdn.the-village.ru/the-village.ru/assets/sensai-1403/video_3.mp4"
+        <video class="music-block-additional-part__video"  loop="loop" autoplay="" muted="" playsinline>
+          <source src="https://cdn.the-village.ru/the-village.ru/assets/sensai-1403/video_4.mp4"
             type="video/mp4" />
         </video>
       </div>
       <div class="music-block-additional-part-icon"></div>
+    </div>
+  </div>
+
+  <div id="fourth-music-player" class="meditationMusicPlayer current-music-player">
+    <div class="music-player-icon first-player-icon"></div>
+    <div class="music-player-icon second-player-icon"></div>
+
+    <button id="playpausebtn" class="post__playpausebtn current-music-player__button" data-audio-index='3'></button>
+    <button id="mutebtn" class="post__mutebtn current-music-player__button" data-audio-index='3'></button>
+
+    <input class="post__seekslider" id="seekslider" type="range" min="0" max="100" value="0" step="1" data-audio-index='3'>
+
+    <div class="player__texts" data-text='0'>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='0'>
+
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='1'>
+        Каждый день вы видите себя в отражении, смотрите на один и тот же пейзаж, говорите
+        с давно знакомыми людьми.
+        А что, если сегодня всё в вашей жизни изменится — и эта перемена родится внутри вас?
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='2'>
+        Подойдите к зеркалу.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='3'>
+        Посмотрите себе в глаза.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='4'>
+        Посмотрите на себя так, как вы обычно это делаете: на что вы обращаете внимание в первую очередь?
+        Что вам в себе обычно нравится? Что вы считаете красивым в своей фигуре и лице?
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='5'>
+        А что вы избегаете в своей внешности, не хотите замечать? С кем вы сравниваете себя в этот момент?
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='6'>
+        Эти ответы не могут быть правильными или неправильными. Просто отметьте их для себя.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='7'>
+        И теперь закройте глаза. Сделайте глубокий вдох и ещё глубже — выдох.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='8'>
+        Перед тем как открыть глаза, представьте, что вы сейчас увидите другого человека.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='9'>
+        Постарайтесь посмотреть на него глазами, наполненными принятием и безусловной любовью.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='10'>
+        Глубокий вдох.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='11'>
+        Ещё глубже выдох.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='12'>
+        И после этого открывайте глаза.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='13'>
+        Посмотрите на себя как на любимого человека — нежно и без осуждений.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='14'>
+        Медленно проведите взглядом сверху вниз.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='15'>
+        Обратите внимание на длину волос.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='16'>
+        Форму глаз. Форму бровей.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='17'>
+        Оттенок кожи.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='18'>
+        Родинки.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='19'>
+        Как вам кажется, какой части тела меньше всего достаётся комплиментов?
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='20'>
+        Про себя скажите эти добрые слова.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='21'>
+        По-новому взгляните на уже знакомые изгибы.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='22'>
+        Сделайте несколько простых движений бёдрами, плечами, головой.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='23'>
+        Почувствуйте, как изменились ваши внутренние ощущения от чего-то привычного.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='24'>
+        И теперь плавно переведите внимание на остальные вещи вокруг вас.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='25'>
+        Что вы не замечали в них?
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='26'>
+        Возможно, это просто температура и запах воздуха. Картина на стене. Духи или крем на полке.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='27'>
+        Посмотрите на окружающее вас пространство по-новому, как исследователь.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='28'>
+        И, запомнив это ощущение, закройте глаза.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='29'>
+        Глубокий вдох и еще глубже выдох.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='30'>
+        Обнимите новую себя.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='31'>
+        И как будете готовы — сделайте шаг в этот новый день, которого никогда не было и который никогда не повторится.
+      </span>
+    </div>
+    <div id="audioSource"></div>
+  </div>
+
+  <div id="fourth-additional-container" class="additionalContainer">
+    <include class="test" src="src/partials/content/menu/item_4.html"></include>
+    <div class="additional-meditations__block">
+      <include class="test" src="src/partials/content/menu/item_1.html"></include>
+      <include class="test" src="src/partials/content/menu/item_2.html"></include>
+      <include class="test" src="src/partials/content/menu/item_3.html"></include>
     </div>
   </div>
 </div>

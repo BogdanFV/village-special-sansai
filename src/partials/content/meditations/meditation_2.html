@@ -13,7 +13,7 @@
       </div>
 
       <!-- Тут была штука с инлайном ивентов, я ее унес в js и css -->
-        <button id="second-sound-button" class="music__button startMeditation">
+      <button id="second-sound-button" class="music__button startMeditation">
         Начать медитацию
       </button>
       <!-- END -->
@@ -27,6 +27,119 @@
         </video>
       </div>
       <div class="music-block-additional-part-icon"></div>
+    </div>
+  </div>
+
+  <div id="second-music-player" class="meditationMusicPlayer current-music-player">
+    <div class="music-player-icon first-player-icon"></div>
+    <div class="music-player-icon second-player-icon"></div>
+
+    <button id="playpausebtn" class="post__playpausebtn current-music-player__button" data-audio-index='1'></button>
+    <button id="mutebtn" class="post__mutebtn current-music-player__button" data-audio-index='1'></button>
+
+    <input class="post__seekslider" id="seekslider" type="range" min="0" max="100" value="0" step="1" data-audio-index='1'>
+
+    <div class="player__texts" data-text='0'>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='0'>
+
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='1'>
+        Закройте глаза ладонями. Погрузитесь в темноту и сместите фокус на дыхание.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='2'>
+        Вдох-выдох. Вдох-выдох. И ещё раз: вдох-выдох.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='3'>
+        Почувствуйте тепло или холод рук.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='4'>
+        Затем плавно надавите несколько раз на закрытые глаза.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='5'>
+        Не спеша проведите пальцами по лицу.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='6'>
+        И попробуйте почувствовать текстуру кожи на лице.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='7'>
+        Помассируйте виски и плавно перейдите к массажу головы.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='8'>
+        Синхронизируйте движения с дыханием.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='9'>
+        На выдохе медленно прикрывайте глаза. А на вдохе медленно открывайте.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='10'>
+        Почувствуйте текстуру волос. Проведите ладонями по всей их длине.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='11'>
+        Коснитесь шеи. Как отличается кожа здесь? Почувствуйте позвонки на задней поверхности.
+        Помассируйте их снизу вверх, чтобы наладить приток крови к голове и снизить уровень усталости
+        и напряжения.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='12'>
+        Затем вернитесь к плечам. Начните их плавно разминать.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='13'>
+        Постарайтесь заметить, что теперь ваше внимание не в мыслях, не в голове — оно плавно спускается ниже в тело, и вы чувствуете себя стабильнее, спокойнее, заземлённее.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='14'>
+        Возьмите в руки крем или эссенцию для лица.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='15'>
+        Не спеша откройте, вдохните аромат. И начните наносить это средство от центра к периферии.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='16'>
+        Почувствуйте, как изменились ощущения от прикосновений. Обратите внимание, как на это влияют аромат, текстура, плотность. Заметьте, как этот простой элемент помог вложить в ваши действия ещё больше заботы к себе.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='17'>
+        Помассируйте область лба.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='18'>
+        Перейдите к скулам.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='19'>
+        И затем к области подбородка.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='20'>
+        Теперь погрузитесь ещё чуть больше в себя.
+        Осознайте свою главную потребность сейчас: возможно, во внимании, в безопасности или в признании.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='21'>
+        Пофантазируйте, как бы вы себя чувствовали, если бы эта потребность уже была удовлетворена. Как бы отличалась мимика, ощущения в теле, уверенность в себе?
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='22'>
+        И теперь попробуйте через прикосновения к лицу, шее, плечам как бы закрепить это внутреннее ощущение, сохранить его.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='23'>
+        Про себя скажите себе слова, которые вы чаще всего ждёте от других. Станьте для себя опорой.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='24'>
+        И в момент, когда вы почувствуете это каждой своей клеткой, закройте лицо руками. Сделайте три цикла дыхания.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='25'>
+        Вдох и выдох.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='26'>
+        Вдох и выдох.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='27'>
+        Вдох и выдох.
+      </span>
+      <span id="music-player-text" class="texts__text music-player-text" data-index='28'>
+        И встречайте сегодняшний день, чувствуя воодушевление, готовность, силу и красоту.
+      </span>
+    </div>
+    <div id="audioSource"></div>
+  </div>
+
+  <div id="second-additional-container" class="additionalContainer">
+    <include class="test" src="src/partials/content/menu/item_2.html"></include>
+    <div class="additional-meditations__block">
+      <include class="test" src="src/partials/content/menu/item_1.html"></include>
+      <include class="test" src="src/partials/content/menu/item_3.html"></include>
+      <include class="test" src="src/partials/content/menu/item_4.html"></include>
     </div>
   </div>
 </div>

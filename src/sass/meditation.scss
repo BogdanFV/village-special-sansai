@@ -21,7 +21,17 @@
       display: none;
     }
   }
-
+  &.endMeditation {
+    .music-block {
+      display: none;
+    }
+    .meditationMusicPlayer {
+      display: none;
+    }
+    .additionalContainer{
+      display: flex;
+    }
+  }
   @for $i from 0 through 10 {
     &[data-meditation='#{$i}'] {
       .meditationsContainer__meditation[data-index='#{$i}'] {
@@ -83,6 +93,7 @@
 
       color: #ffffff;
     }
+
     .music__button:hover {
       cursor: pointer;
       background-color: #ffffff;

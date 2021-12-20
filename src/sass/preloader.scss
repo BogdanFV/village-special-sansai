@@ -1,0 +1,41 @@
+.preloader-indicator{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+
+  /* identical to box height, or 83% */
+
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  .preloader-percent{
+    margin-top: get-vw(50px, 1440);
+    margin-bottom: get-vw(50px, 1440);
+    height: get-vw(100px, 1440);
+
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: get-vw(1px, 1440);
+    -webkit-text-stroke-color: #FFFFFF;
+    font-family: var(--font-main);
+    font-style: normal;
+    font-size: get-vw(120px, 1440);
+    line-height: get-vw(100px, 1440);
+  }
+  .music-player-icon{
+    text-align: center;
+    content: '';
+    height: get-vw(50px, 1440);
+    width: get-vw(50px, 1440);
+    background-repeat: no-repeat;
+    background-size: get-vw(44px, 1440) get-vw(44px, 1440);
+    background-image: url(https://cdn.the-village.ru/the-village.ru/2021/12/15/music-block__icon.svg);
+  }
+}
+.invicible-indicator{
+  display: none;
+}
