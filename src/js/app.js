@@ -29,7 +29,8 @@
     let audios = [...postContainer.querySelectorAll('.post__audio')];
 
     let playbtns = [...postContainer.querySelectorAll('.post__playpausebtn')],
-      mutebtns = [...postContainer.querySelectorAll('.post__mutebtn')];
+      mutebtns = [...postContainer.querySelectorAll('.post__mutebtn')],
+      backbtns = [...postContainer.querySelectorAll('.post__backbtn')];
 
     let seeksliders = [...postContainer.querySelectorAll('.post__seekslider')];
     let itemsToOpenLandingMeditation = [
@@ -103,6 +104,14 @@
         target: mutebtn,
         type: 'click',
         func: mute,
+      });
+    });
+
+    backbtns.forEach((backbtn) => {
+      configOfEventListeners(false, {
+        target: backbtn,
+        type: 'click',
+        func: back,
       });
     });
 
@@ -213,6 +222,15 @@
         target.style.backgroundSize = '100% 100%';
         // END
       }
+    }
+    function back(event) {
+      let target = event.currentTarget,
+        target__index = target.getAttribute('data-audio-index');
+      let audio = audios[target__index];
+
+      audio.pause();
+      meditationsContainer.classList.remove('startMeditation');
+      menuContainer.classList.remove('openMeditation');
     }
     function seek(event) {
       // в этой функции мы трекаем изменение инпута

@@ -37,6 +37,11 @@
         font-size: get-vw(28px, 1440);
         width: get-vw(941px, 1440);
         margin-left: get-vw(90px, 1440);
+        line-height: get-vw(36px, 1440);
+
+        .sensai-link{
+          color: #ffffff;
+        }
       }
 
       .content-cover {
@@ -99,6 +104,10 @@
         background: url(https://cdn.the-village.ru/the-village.ru/2021/12/15/gel-wash-icon.svg)
           no-repeat;
         background-size: cover;
+      }
+      .carousel-cover{
+        height: get-vw(560px, 1440);;
+        position: relative;
       }
 
     }
