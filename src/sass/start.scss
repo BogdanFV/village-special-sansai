@@ -106,8 +106,8 @@
         background-size: cover;
       }
       .carousel-cover{
-        height: get-vw(560px, 1440);;
         position: relative;
+        width: get-vw(1360px, 1440);
       }
 
     }

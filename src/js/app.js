@@ -33,6 +33,7 @@
       backbtns = [...postContainer.querySelectorAll('.post__backbtn')];
 
     let seeksliders = [...postContainer.querySelectorAll('.post__seekslider')];
+    let seeksliderCovers = [...postContainer.querySelectorAll('.post__seekslider__indicator')];
     let itemsToOpenLandingMeditation = [
         ...postContainer.querySelectorAll('.openLandingMeditation'),
       ],
@@ -46,7 +47,6 @@
 
 
     backgroundVideo.onprogress = function() {
-      console.log(backgroundVideo.readyState);
       switch(backgroundVideo.readyState){
         case 0:
           preloadText.innerHTML = "0%";
@@ -157,70 +157,37 @@
         target__index = target.getAttribute('data-audio-index'); // У каждой кнопки плея в дата аттрибуте лежит индекс аудио за которое она отвечает
 
       let audio = audios[target__index];
-      console.log(target, audio, audios);
+     // console.log(target, audio, audios);
 
       if (audio.paused) {
         audio.play();
-
-        console.log('вкл аудио №' + target__index);
-
-        /* Вот эту штуку лучше не инлайнить, тк картинка загружается ток в момент первого вызова кода,
-           лучше унести это в before/after элменты css и просто накидывать какиой-то класс для изменения стейта и отображения другой пикчи
-           ваще всегда старайся уносить всякие css штуки в css, так код и рендер быстрее будет работать
-        */
         target.style.background =
           'url(https://cdn.the-village.ru/the-village.ru/2021/12/17/pausebtn_0.svg) center no-repeat';
         target.style.backgroundSize = '100% 100%';
         // END
       } else {
         audio.pause();
-
-        console.log('выкл аудио №' + target__index);
-
-        /* Вот эту штуку лучше не инлайнить, тк картинка загружается ток в момент первого вызова кода,
-           лучше унести это в before/after элменты css и просто накидывать какиой-то класс для изменения стейта и отображения другой пикчи
-           ваще всегда старайся уносить всякие css штуки в css, так код и рендер быстрее будет работать
-        */
         target.style.background =
           'url(https://cdn.the-village.ru/the-village.ru/2021/12/17/playbtn_1.svg) center no-repeat';
         target.style.backgroundSize = '100% 100%';
-        // END
       }
     }
     function mute(event) {
       let target = event.currentTarget,
-        target__index = target.getAttribute('data-audio-index'); // У каждой кнопки мута в дата аттрибуте лежит индекс аудио за которое она отвечает
+        target__index = target.getAttribute('data-audio-index');
 
       let audio = audios[target__index];
 
       if (audio.volume == 1) {
-        // Заменил muted на volume, тк в сафари возникают конфликты с мутед этим
         audio.volume = 0;
-
-        console.log('Мут аудио №' + target__index);
-
-        /* Вот эту штуку лучше не инлайнить, тк картинка загружается ток в момент первого вызова кода,
-           лучше унести это в before/after элменты css и просто накидывать какиой-то класс для изменения стейта и отображения другой пикчи
-           ваще всегда старайся уносить всякие css штуки в css, так код и рендер быстрее будет работать
-        */
         target.style.background =
           'url(https://cdn.the-village.ru/the-village.ru/2021/12/17/sound-btn_0.svg) center no-repeat';
         target.style.backgroundSize = '100% 100%';
-        // END
       } else {
-        // Заменил muted на volume, тк в сафари возникают конфликты с мутед этим
         audio.volume = 1;
-
-        console.log('Демут аудио №' + target__index);
-
-        /* Вот эту штуку лучше не инлайнить, тк картинка загружается ток в момент первого вызова кода,
-           лучше унести это в before/after элменты css и просто накидывать какиой-то класс для изменения стейта и отображения другой пикчи
-           ваще всегда старайся уносить всякие css штуки в css, так код и рендер быстрее будет работать
-        */
         target.style.background =
           'url(https://cdn.the-village.ru/the-village.ru/2021/12/17/unmuted-btn.svg) center no-repeat';
         target.style.backgroundSize = '100% 100%';
-        // END
       }
     }
     function back(event) {
@@ -233,36 +200,31 @@
       menuContainer.classList.remove('openMeditation');
     }
     function seek(event) {
-      // в этой функции мы трекаем изменение инпута
       let target = event.currentTarget,
-        target__value = target.value, // Забираем значение выбранное в инпуте
-        target__index = target.getAttribute('data-audio-index'); // У каждого инпутпа в дата аттрибуте лежит индекс аудио за которое он отвечает
+        target__value = target.value,
+        target__index = target.getAttribute('data-audio-index');
 
       let audio = audios[target__index],
         audio__duration = audio.duration;
-
-      let neededCurrentTime = audio__duration * (target__value / 100); // получаем время необходимое для прослушивания
+      let neededCurrentTime = audio__duration * (target__value / 100);
 
       audio.currentTime = neededCurrentTime;
+      console.log("audio.currentTime: " + audio.currentTime);
+      console.log("target__value: " + target__value);
     }
 
     function seektimeupdate(event) {
-      // в этой функции мы трекаем изменение currentTime у аудио
       let target = event.currentTarget,
         target__index = audios.indexOf(target);
-
       // Тут собираем инфу для изменения инпута по мере прослушивания
       let target__currentTime = target.currentTime,
         target__duration = target.duration;
 
       let neededValueForInput = (target__currentTime * 100) / target__duration;
-
+      let sliderLength = document.querySelector('.post__seekslider__indicator');
       seeksliders[target__index].value = neededValueForInput;
-      // END
-
-      // Тут надо ебаться с настройкой отоюражения этих текстовых-блоков-субтитров
+      seeksliderCovers[target__index].style.width = seeksliders[target__index].value + "%";
       showSubs(target__index);
-      // END
     }
 
     let meditationItems = [
@@ -281,232 +243,235 @@
         `.meditationsContainer__meditation[data-index='${indexOfAudio}'] .player__texts[data-text]`,
       );
       let currentIndexOfSub = -1;
+      let newTimeInterval;
 
       switch (indexOfAudio) {
         case 0:
           switch(true){
-            case audio__currentTime >= 6 && audio__currentTime <= 16:
+            case audio__currentTime >= 6 && audio__currentTime <= 1 + 16:
               currentIndexOfSub = 1;
+              if(Math.trunc(audio__currentTime) == 14){
+                subsContainer.children[currentIndexOfSub-1].classList.remove('music-player-text');
+                subsContainer.children[currentIndexOfSub-1].classList.add('music-player-text-dissapear');
+              }
+              newTimeInterval = audio__currentTime;
               break;
 
-            case audio__currentTime >= 19 && audio__currentTime <= 25:
+            case audio__currentTime >= 19 && audio__currentTime <= 1 + 25:
               currentIndexOfSub = 2;
+
               break;
 
-            case audio__currentTime >= 28 && audio__currentTime <= 34:
+            case audio__currentTime >= 28 && audio__currentTime <= 1 + 34:
               currentIndexOfSub = 3;
               break;
 
-            case audio__currentTime >= 37 && audio__currentTime <= 43:
+            case audio__currentTime >= 37 && audio__currentTime <= 1 + 43:
               currentIndexOfSub = 4;
               break;
 
-            case audio__currentTime >= 46 && audio__currentTime <= 49:
+            case audio__currentTime >= 46 && audio__currentTime <= 1 + 49:
               currentIndexOfSub = 5;
               break;
 
-            case audio__currentTime >= 51 && audio__currentTime <= 57:
+            case audio__currentTime >= 51 && audio__currentTime <= 1 + 57:
               currentIndexOfSub = 6;
               break;
 
-            case audio__currentTime >= 61 && audio__currentTime <= 68:
+            case audio__currentTime >= 61 && audio__currentTime <= 1 + 68:
               currentIndexOfSub = 7;
               break;
 
-            case audio__currentTime >= 74 && audio__currentTime <= 82:
+            case audio__currentTime >= 74 && audio__currentTime <= 1 + 82:
               currentIndexOfSub = 8;
               break;
 
-            case audio__currentTime >= 88 && audio__currentTime <= 97:
+            case audio__currentTime >= 88 && audio__currentTime <= 1 + 97:
               currentIndexOfSub = 9;
               break;
 
-            case audio__currentTime >= 103 && audio__currentTime <= 113:
+            case audio__currentTime >= 103 && audio__currentTime <= 1 + 113:
               currentIndexOfSub = 10;
               break;
 
-            case audio__currentTime >= 118 && audio__currentTime <= 125:
+            case audio__currentTime >= 118 && audio__currentTime <= 1 + 125:
               currentIndexOfSub = 11;
               break;
 
-            case audio__currentTime >= 130 && audio__currentTime <= 137:
+            case audio__currentTime >= 130 && audio__currentTime <= 1 + 137:
               currentIndexOfSub = 12;
               break;
 
-            case audio__currentTime >= 141 && audio__currentTime <= 151:
+            case audio__currentTime >= 141 && audio__currentTime <= 1 + 151:
               currentIndexOfSub = 13;
               break;
 
-            case audio__currentTime >= 157 && audio__currentTime <= 164:
+            case audio__currentTime >= 157 && audio__currentTime <= 1 + 164:
               currentIndexOfSub = 14;
               break;
 
-            case audio__currentTime >= 168 && audio__currentTime <= 179:
+            case audio__currentTime >= 168 && audio__currentTime <= 1 + 179:
               currentIndexOfSub = 15;
               break;
 
-            case audio__currentTime >= 182 && audio__currentTime <= 203:
+            case audio__currentTime >= 182 && audio__currentTime <= 1 + 203:
               currentIndexOfSub = 16;
               break;
 
-            case audio__currentTime >= 206 && audio__currentTime <= 217:
+            case audio__currentTime >= 206 && audio__currentTime <= 1 + 217:
               currentIndexOfSub = 17;
               break;
 
-            case audio__currentTime >= 219 && audio__currentTime <= 233:
+            case audio__currentTime >= 219 && audio__currentTime <= 1 + 233:
               currentIndexOfSub = 18;
               break;
 
-            case audio__currentTime >= 235 && audio__currentTime <= 246:
+            case audio__currentTime >= 235 && audio__currentTime <= 1 + 246:
               currentIndexOfSub = 19;
               break;
 
-            case audio__currentTime >= 249 && audio__currentTime <= 258:
+            case audio__currentTime >= 249 && audio__currentTime <= 1 + 258:
               currentIndexOfSub = 20;
               break;
 
-            case audio__currentTime >= 261 && audio__currentTime <= 263:
+            case audio__currentTime >= 261 && audio__currentTime <= 1 + 263:
               currentIndexOfSub = 21;
               break;
 
-            case audio__currentTime >= 265 && audio__currentTime <= 281:
+            case audio__currentTime >= 265 && audio__currentTime <= 1 + 281:
               currentIndexOfSub = 22;
               break;
 
 
             case audio__currentTime == audio__duration :
               finishMeditation();
-              console.log("we are here");
               break;
 
             default:
-              console.log(audio__currentTime);
-              console.log("0");
-              currentIndexOfSub = 0;
+              //console.log(subsContainer.children[currentIndexOfSub-1]);
+             // setTimeout("currentIndexOfSub = 0", 500);
               break;
           };
           break;
         case 1:
           switch(true){
-            case audio__currentTime >= 5 && audio__currentTime <= 12:
+            case audio__currentTime >= 5 && audio__currentTime <= 1 + 12:
               currentIndexOfSub = 1;
               break;
 
-            case audio__currentTime >= 15 && audio__currentTime <= 36:
+            case audio__currentTime >= 15 && audio__currentTime <= 1 + 36:
               currentIndexOfSub = 2;
               break;
 
-            case audio__currentTime >= 38 && audio__currentTime <= 41:
+            case audio__currentTime >= 38 && audio__currentTime <= 1 + 41:
               currentIndexOfSub = 3;
               break;
 
-            case audio__currentTime >= 43 && audio__currentTime <= 47:
+            case audio__currentTime >= 43 && audio__currentTime <= 1 + 47:
               currentIndexOfSub = 4;
               break;
 
-            case audio__currentTime >= 51 && audio__currentTime <= 53:
+            case audio__currentTime >= 51 && audio__currentTime <= 1 + 53:
               currentIndexOfSub = 5;
               break;
 
-            case audio__currentTime >= 57 && audio__currentTime <= 60:
+            case audio__currentTime >= 57 && audio__currentTime <= 1 + 60:
               currentIndexOfSub = 6;
               break;
 
-            case audio__currentTime >= 65 && audio__currentTime <= 72:
+            case audio__currentTime >= 65 && audio__currentTime <= 1 + 72:
               currentIndexOfSub = 7;
               break;
 
-            case audio__currentTime >= 78 && audio__currentTime <= 81:
+            case audio__currentTime >= 78 && audio__currentTime <= 1 + 81:
               currentIndexOfSub = 8;
               break;
 
-            case audio__currentTime >= 86 && audio__currentTime <= 94:
+            case audio__currentTime >= 86 && audio__currentTime <= 1 + 94:
               currentIndexOfSub = 9;
               break;
 
-            case audio__currentTime >= 100 && audio__currentTime <= 107:
+            case audio__currentTime >= 100 && audio__currentTime <= 1 + 107:
               currentIndexOfSub = 10;
               break;
 
-            case audio__currentTime >= 111 && audio__currentTime <= 128:
+            case audio__currentTime >= 111 && audio__currentTime <= 1 + 128:
               currentIndexOfSub = 11;
               break;
 
-            case audio__currentTime >= 135 && audio__currentTime <= 140:
+            case audio__currentTime >= 135 && audio__currentTime <= 1 + 140:
               currentIndexOfSub = 12;
               break;
 
-            case audio__currentTime >= 144 && audio__currentTime <= 158:
+            case audio__currentTime >= 144 && audio__currentTime <= 1 + 158:
               currentIndexOfSub = 13;
               break;
 
-            case audio__currentTime >= 167 && audio__currentTime <= 170:
+            case audio__currentTime >= 167 && audio__currentTime <= 1 + 170:
               currentIndexOfSub = 14;
               break;
 
-            case audio__currentTime >= 173 && audio__currentTime <= 182:
+            case audio__currentTime >= 173 && audio__currentTime <= 1 + 182:
               currentIndexOfSub = 15;
               break;
 
-            case audio__currentTime >= 185 && audio__currentTime <= 204:
+            case audio__currentTime >= 185 && audio__currentTime <= 1 + 204:
               currentIndexOfSub = 16;
               break;
 
-            case audio__currentTime >= 210 && audio__currentTime <= 212:
+            case audio__currentTime >= 210 && audio__currentTime <= 1 + 212:
               currentIndexOfSub = 17;
               break;
 
-            case audio__currentTime >= 218 && audio__currentTime <= 220:
+            case audio__currentTime >= 218 && audio__currentTime <= 1 + 220:
               currentIndexOfSub = 18;
               break;
 
-            case audio__currentTime >= 223 && audio__currentTime <= 225:
+            case audio__currentTime >= 223 && audio__currentTime <= 1 + 225:
               currentIndexOfSub = 19;
               break;
 
-            case audio__currentTime >= 236 && audio__currentTime <= 249:
+            case audio__currentTime >= 236 && audio__currentTime <= 1 + 249:
               currentIndexOfSub = 20;
               break;
 
-            case audio__currentTime >= 252 && audio__currentTime <= 265:
+            case audio__currentTime >= 252 && audio__currentTime <= 1 + 265:
               currentIndexOfSub = 21;
               break;
 
-            case audio__currentTime >= 270 && audio__currentTime <= 280:
+            case audio__currentTime >= 270 && audio__currentTime <= 1 + 280:
               currentIndexOfSub = 22;
               break;
 
-            case audio__currentTime >= 288 && audio__currentTime <= 295:
+            case audio__currentTime >= 288 && audio__currentTime <= 1 + 295:
               currentIndexOfSub = 23;
               break;
 
-            case audio__currentTime >= 299 && audio__currentTime <= 309:
+            case audio__currentTime >= 299 && audio__currentTime <= 1 + 309:
               currentIndexOfSub = 24;
               break;
 
-            case audio__currentTime >= 311 && audio__currentTime <= 314:
+            case audio__currentTime >= 311 && audio__currentTime <= 1 + 314:
               currentIndexOfSub = 25;
               break;
-            case audio__currentTime >= 318 && audio__currentTime <= 322:
+            case audio__currentTime >= 318 && audio__currentTime <= 1 + 322:
               currentIndexOfSub = 26;
               break;
 
-            case audio__currentTime >= 325 && audio__currentTime <= 330:
+            case audio__currentTime >= 325 && audio__currentTime <= 1 + 330:
               currentIndexOfSub = 27;
               break;
 
-            case audio__currentTime >= 333 && audio__currentTime <= 342:
+            case audio__currentTime >= 333 && audio__currentTime <= 1 + 342:
               currentIndexOfSub = 28;
               break;
 
             case audio__currentTime == audio__duration:
               finishMeditation();
-              console.log("we are here");
               break;
 
             default:
               console.log(audio__currentTime);
-              console.log("0");
               currentIndexOfSub = 0;
               break;
           };
@@ -514,107 +479,104 @@
 
         case 2:
             switch(true){
-              case audio__currentTime >= 7 && audio__currentTime <= 14:
+              case audio__currentTime >= 7 && audio__currentTime <= 1 + 14:
                 currentIndexOfSub = 1;
                 break;
 
-              case audio__currentTime >= 17 && audio__currentTime <= 37:
+              case audio__currentTime >= 17 && audio__currentTime <= 1 + 37:
                 currentIndexOfSub = 2;
                 break;
 
-              case audio__currentTime >= 61 && audio__currentTime <= 70:
+              case audio__currentTime >= 61 && audio__currentTime <= 1 + 70:
                 currentIndexOfSub = 3;
                 break;
 
-              case audio__currentTime >= 73 && audio__currentTime <= 78:
+              case audio__currentTime >= 73 && audio__currentTime <= 1 + 78:
                 currentIndexOfSub = 4;
                 break;
 
-              case audio__currentTime >= 83 && audio__currentTime <= 89:
+              case audio__currentTime >= 83 && audio__currentTime <= 1 + 89:
                 currentIndexOfSub = 5;
                 break;
 
-              case audio__currentTime >= 93 && audio__currentTime <= 101:
+              case audio__currentTime >= 93 && audio__currentTime <= 1 + 101:
                 currentIndexOfSub = 6;
                 break;
 
-              case audio__currentTime >= 110 && audio__currentTime <= 112:
+              case audio__currentTime >= 110 && audio__currentTime <= 1 + 112:
                 currentIndexOfSub = 7;
                 break;
 
-              case audio__currentTime >= 116 && audio__currentTime <= 117:
+              case audio__currentTime >= 116 && audio__currentTime <= 1 + 117:
                 currentIndexOfSub = 8;
                 break;
 
-              case audio__currentTime >= 123 && audio__currentTime <= 124:
+              case audio__currentTime >= 123 && audio__currentTime <= 1 + 124:
                 currentIndexOfSub = 9;
                 break;
 
-              case audio__currentTime >= 128 && audio__currentTime <= 129:
+              case audio__currentTime >= 128 && audio__currentTime <= 1 + 129:
                 currentIndexOfSub = 10;
                 break;
 
-              case audio__currentTime >= 135 && audio__currentTime <= 138:
+              case audio__currentTime >= 135 && audio__currentTime <= 1 + 138:
                 currentIndexOfSub = 11;
                 break;
 
-              case audio__currentTime >= 144 && audio__currentTime <= 149:
+              case audio__currentTime >= 144 && audio__currentTime <= 1 + 149:
                 currentIndexOfSub = 12;
                 break;
 
-              case audio__currentTime >= 155 && audio__currentTime <= 157:
+              case audio__currentTime >= 155 && audio__currentTime <= 1 + 157:
                 currentIndexOfSub = 13;
                 break;
 
-              case audio__currentTime >= 161 && audio__currentTime <= 163:
+              case audio__currentTime >= 161 && audio__currentTime <= 1 + 163:
                 currentIndexOfSub = 14;
                 break;
 
-              case audio__currentTime >= 171 && audio__currentTime <= 175:
+              case audio__currentTime >= 171 && audio__currentTime <= 1 + 175:
                 currentIndexOfSub = 15;
                 break;
 
-              case audio__currentTime >= 179 && audio__currentTime <= 183:
+              case audio__currentTime >= 179 && audio__currentTime <= 1 + 183:
                 currentIndexOfSub = 16;
                 break;
 
-              case audio__currentTime >= 193 && audio__currentTime <= 201:
+              case audio__currentTime >= 193 && audio__currentTime <= 1 + 201:
                 currentIndexOfSub = 17;
                 break;
 
-              case audio__currentTime >= 203 && audio__currentTime <= 219:
+              case audio__currentTime >= 203 && audio__currentTime <= 1 + 219:
                 currentIndexOfSub = 18;
                 break;
 
-              case audio__currentTime >= 223 && audio__currentTime <= 230:
+              case audio__currentTime >= 223 && audio__currentTime <= 1 + 230:
                 currentIndexOfSub = 19;
                 break;
 
-              case audio__currentTime >= 233 && audio__currentTime <= 248:
+              case audio__currentTime >= 233 && audio__currentTime <= 1 + 248:
                 currentIndexOfSub = 20;
                 break;
 
-              case audio__currentTime >= 253 && audio__currentTime <= 258:
+              case audio__currentTime >= 253 && audio__currentTime <= 1 + 258:
                 currentIndexOfSub = 21;
                 break;
 
-              case audio__currentTime >= 261 && audio__currentTime <= 264:
+              case audio__currentTime >= 261 && audio__currentTime <= 1 + 264:
                 currentIndexOfSub = 22;
                 break;
 
-              case audio__currentTime >= 266 && audio__currentTime <= 271:
+              case audio__currentTime >= 266 && audio__currentTime <= 1 + 271:
                 currentIndexOfSub = 23;
                 break;
 
 
               case audio__currentTime == audio__duration:
                 finishMeditation();
-                console.log("we are here");
-                break;
 
               default:
                 console.log(audio__currentTime);
-                console.log("0");
                 currentIndexOfSub = 0;
                 break;
             };
@@ -622,139 +584,137 @@
 
         case 3:
           switch(true){
-            case audio__currentTime >= 5 && audio__currentTime <= 23:
+            case audio__currentTime >= 5 && audio__currentTime <= 1 + 23:
               currentIndexOfSub = 1;
               break;
 
-            case audio__currentTime >= 26 && audio__currentTime <= 27:
+            case audio__currentTime >= 26 && audio__currentTime <= 1 + 27:
               currentIndexOfSub = 2;
               break;
 
-            case audio__currentTime >= 30 && audio__currentTime <= 32:
+            case audio__currentTime >= 30 && audio__currentTime <= 1 + 32:
               currentIndexOfSub = 3;
               break;
 
-            case audio__currentTime >= 35 && audio__currentTime <= 52:
+            case audio__currentTime >= 35 && audio__currentTime <= 1 + 52:
               currentIndexOfSub = 4;
               break;
 
-            case audio__currentTime >= 61 && audio__currentTime <= 70:
+            case audio__currentTime >= 61 && audio__currentTime <= 1 + 70:
               currentIndexOfSub = 5;
               break;
 
-            case audio__currentTime >= 79 && audio__currentTime <= 84:
+            case audio__currentTime >= 79 && audio__currentTime <= 1 + 84:
               currentIndexOfSub = 6;
               break;
 
-            case audio__currentTime >= 89 && audio__currentTime <= 99:
+            case audio__currentTime >= 89 && audio__currentTime <= 1 + 99:
               currentIndexOfSub = 7;
               break;
 
-            case audio__currentTime >= 106 && audio__currentTime <= 112:
+            case audio__currentTime >= 106 && audio__currentTime <= 1 + 112:
               currentIndexOfSub = 8;
               break;
 
-            case audio__currentTime >= 114 && audio__currentTime <= 121:
+            case audio__currentTime >= 114 && audio__currentTime <= 1 + 121:
               currentIndexOfSub = 9;
               break;
 
-            case audio__currentTime >= 123 && audio__currentTime <= 125:
+            case audio__currentTime >= 123 && audio__currentTime <= 1 + 125:
               currentIndexOfSub = 10;
               break;
 
-            case audio__currentTime >= 127 && audio__currentTime <= 130:
+            case audio__currentTime >= 127 && audio__currentTime <= 1 + 130:
               currentIndexOfSub = 11;
               break;
 
-            case audio__currentTime >= 131 && audio__currentTime <= 135:
+            case audio__currentTime >= 131 && audio__currentTime <= 1 + 135:
               currentIndexOfSub = 12;
               break;
 
-            case audio__currentTime >= 139 && audio__currentTime <= 145:
+            case audio__currentTime >= 139 && audio__currentTime <= 1 + 145:
               currentIndexOfSub = 13;
               break;
 
-            case audio__currentTime >= 148 && audio__currentTime <= 153:
+            case audio__currentTime >= 148 && audio__currentTime <= 1 + 153:
               currentIndexOfSub = 14;
               break;
 
-            case audio__currentTime >= 158 && audio__currentTime <= 160:
+            case audio__currentTime >= 158 && audio__currentTime <= 1 + 160:
               currentIndexOfSub = 15;
               break;
 
-            case audio__currentTime >= 165 && audio__currentTime <= 169:
+            case audio__currentTime >= 165 && audio__currentTime <= 1 + 169:
               currentIndexOfSub = 16;
               break;
 
-            case audio__currentTime >= 172 && audio__currentTime <= 174:
+            case audio__currentTime >= 172 && audio__currentTime <= 1 + 174:
               currentIndexOfSub = 17;
               break;
 
-            case audio__currentTime >= 178 && audio__currentTime <= 179:
+            case audio__currentTime >= 178 && audio__currentTime <= 1 + 179:
               currentIndexOfSub = 18;
               break;
 
-            case audio__currentTime >= 182 && audio__currentTime <= 187:
+            case audio__currentTime >= 182 && audio__currentTime <= 1 + 187:
               currentIndexOfSub = 19;
               break;
 
-            case audio__currentTime >= 190 && audio__currentTime <= 193:
+            case audio__currentTime >= 190 && audio__currentTime <= 1 + 193:
               currentIndexOfSub = 20;
               break;
 
-            case audio__currentTime >= 201 && audio__currentTime <= 205:
+            case audio__currentTime >= 201 && audio__currentTime <= 1 + 205:
               currentIndexOfSub = 21;
               break;
 
-            case audio__currentTime >= 209 && audio__currentTime <= 214:
+            case audio__currentTime >= 209 && audio__currentTime <= 1 + 214:
               currentIndexOfSub = 22;
               break;
 
-            case audio__currentTime >= 221 && audio__currentTime <= 228:
+            case audio__currentTime >= 221 && audio__currentTime <= 1 + 228:
               currentIndexOfSub = 23;
               break;
 
-            case audio__currentTime >= 231 && audio__currentTime <= 236:
+            case audio__currentTime >= 231 && audio__currentTime <= 1 + 236:
               currentIndexOfSub = 24;
               break;
 
-            case audio__currentTime >= 238 && audio__currentTime <= 240:
+            case audio__currentTime >= 238 && audio__currentTime <= 1 + 240:
               currentIndexOfSub = 25;
               break;
 
-            case audio__currentTime >= 242 && audio__currentTime <= 251:
+            case audio__currentTime >= 242 && audio__currentTime <= 1 + 251:
               currentIndexOfSub = 26;
               break;
 
-            case audio__currentTime >= 256 && audio__currentTime <= 261:
+            case audio__currentTime >= 256 && audio__currentTime <= 1 + 261:
               currentIndexOfSub = 27;
               break;
 
-            case audio__currentTime >= 264 && audio__currentTime <= 267:
+            case audio__currentTime >= 264 && audio__currentTime <= 1 + 267:
               currentIndexOfSub = 28;
               break;
 
-            case audio__currentTime >= 273 && audio__currentTime <= 277:
+            case audio__currentTime >= 273 && audio__currentTime <= 1 + 277:
               currentIndexOfSub = 29;
               break;
 
-            case audio__currentTime >= 282 && audio__currentTime <= 284:
+            case audio__currentTime >= 282 && audio__currentTime <= 1 + 284:
               currentIndexOfSub = 30;
               break;
 
-            case audio__currentTime >= 288 && audio__currentTime <= 297:
+            case audio__currentTime >= 288 && audio__currentTime <= 1 + 297:
               currentIndexOfSub = 31;
               break;
 
 
             case audio__currentTime == audio__duration:
               finishMeditation();
-              console.log("we are here");
               break;
 
             default:
               console.log(audio__currentTime);
-              console.log("0");
               currentIndexOfSub = 0;
               break;
           };

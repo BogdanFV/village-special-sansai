@@ -39,7 +39,12 @@
     <button id="mutebtn" class="post__mutebtn current-music-player__button" data-audio-index='0'></button>
     <button id="backbtn" class="post__backbtn current-music-player__button" data-audio-index='0'>Вернуться назад</button>
 
-    <input class="post__seekslider" id="seekslider" type="range" min="0" max="100" value="0" step="1" data-audio-index='0'>
+    <div class="seekslider-cover">
+      <div class="seekslider-cover__inner">
+        <input class="post__seekslider" id="seekslider" type="range" min="0" max="100" value="0" step="1" data-audio-index='0'>
+        <div class="post__seekslider__indicator"></div>
+      </div>
+    </div>
 
     <div class="player__texts" data-text='0'>
       <span id="music-player-text" class="texts__text music-player-text" data-index='0'>
