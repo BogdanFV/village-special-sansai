@@ -232,6 +232,51 @@
         'meditationsContainer__meditation',
       ),
     ];
+    let itemsToLoad__audios = [...postContainer.querySelectorAll("audio")],
+        itemsToLoad__videos = [...postContainer.querySelectorAll("video")];
+
+    itemsToLoad__audios.forEach( itemsToLoad__audio => {
+      configOfEventListeners(false, {
+        target: itemsToLoad__audio,
+        type: 'canplaythrough',
+        func: updateStateOfPreloader,
+      });
+    });
+    itemsToLoad__videos.forEach( itemsToLoad__video => {
+      configOfEventListeners(false, {
+        target: itemsToLoad__video,
+        type: 'canplaythrough',
+        func: updateStateOfPreloader,
+      });
+    });
+
+
+    function updateStateOfPreloader(){
+      let itemsToLoad = itemsToLoad__audios.length + itemsToLoad__videos.length,
+          loadedItems = 0;
+
+      itemsToLoad__audios.forEach( itemsToLoad__audio => {
+        if(itemsToLoad__audio.readyState == 4){
+          loadedItems++;
+        }
+      });
+      itemsToLoad__videos.forEach( itemsToLoad__video => {
+        if(itemsToLoad__video.readyState == 4){
+          loadedItems++;
+        }
+      });
+
+
+      let percentOfLoad = Math.trunc(loadedItems * 100 / itemsToLoad);
+
+
+      if(percentOfLoad == 100){
+        preloaderBlock.classList.add("invicible-indicator");
+        menuContainer.classList.remove('preloaded-for-meditations');
+      }
+
+      preloadText.innerHTML = percentOfLoad;
+    }
 
     function showSubs(indexOfAudio) {
       // В этой функции мы настраиваем отоюражение субтитров

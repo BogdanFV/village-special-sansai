@@ -28,9 +28,20 @@
         Смотрите ASMR-ролик с ритуалом ухода за собой и настройтесь на расслабление.
       </div>
 
-      <div class="gel-wash-picture-cover"></div>
+      <div class="gel-wash-picture-cover">
+        <iframe class="main-page-video-cover" src="https://player.vimeo.com/video/659259131?h=3dc9c2886f" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
+        </iframe>
+      </div>
       <div class="carousel-cover">
         <include src="src/partials/content/carousel.html"></include>
+      </div>
+
+
+      <div class="footer-logo-block">
+        <div class="additional-footer-text">Материал подготовлен при поддержке</div>
+        <a href="https://www.tsum.ru/brand/sensai-32846.html">
+          <img src="https://img.the-village.ru/12CX-Rm2Vo9xln97G2orpG_SagBwdukyh0C7OKxBlvE/q:88/plain/2021/12/22/logo_0.png" class="footer-logo">
+        </a>
       </div>
     </div>
   </div>
@@ -50,4 +61,29 @@
 
 </div>
 
+<script type="text/javascript">
+  {
+    if (document.readyState === 'loading') {
+      // первый вариант, нативное выполнение js
+      // навешиваем события
+      window.addEventListener("LOCATION/PAGE_READY", initPostJs);
+    } else {
+      // второй вариант, выполнение js через реакт
+      // можно не ждать события, а сразу стартовать скрипты
+      initPostJs();
+    }
 
+    function initPostJs() {
+      let iframes = [...document.querySelectorAll('[data-ui-id="post"] iframe')];
+
+      iframes.forEach((item, index, arr) => {
+        let itemWidth = item.parentNode.offsetWidth,
+            itemHeight = itemWidth * (item.height / item.width);
+
+        item.width = itemWidth;
+        item.height = itemHeight;
+      });
+    }
+  }
+
+</script>

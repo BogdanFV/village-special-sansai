@@ -21,6 +21,7 @@
     position: relative;
 
     .page-cover {
+      flex-direction: column;
       width: 100%;
 
       color: #ffffff;
@@ -77,11 +78,14 @@
         margin-right: auto;
         margin-bottom: get-vw(120.56px, 1440);
         border: none;
-        background: url(https://img.the-village.ru/DvVu47D-CwLNMWLfFAGaEjpo4QzvRhzlp85QZGSgmks/q:88/plain/2021/12/15/gel-wash-picture.png)
-          no-repeat;
         background-size: cover;
         width: get-vw(960px, 1440);
         height: get-vw(540.44px, 1440);
+
+        .main-page-video-cover{
+          height: 100%;
+          width: 100%;
+        }
       }
       .gel-wash-picture-cover::before {
         top: 41%;
@@ -107,9 +111,38 @@
       }
       .carousel-cover{
         position: relative;
-        width: get-vw(1360px, 1440);
+        width:get-vw(1260px, 1440);
+        margin:auto;
+        margin-bottom: get-vw(100px, 1440);
       }
+      .footer-logo-block{
 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        padding-top: get-vw(100px, 1440);
+        background-color: #ffffff;
+
+        .additional-footer-text{
+          font-weight: 300;
+          font-size: get-vw(16px, 1440);
+          line-height: get-vw(22px, 1440);
+          width: get-vw(220px, 1440);
+          /* or 137% */
+
+          letter-spacing: get-vw(-0.123077px, 1440);
+          color: #909090;
+        }
+        .footer-logo{
+          margin-top: get-vw(13px, 1440);
+          margin-bottom: get-vw(119px, 1440);
+
+          width: get-vw(235px, 1440);
+          height: get-vw(50px, 1440);
+        }
+      }
     }
   }
 }
