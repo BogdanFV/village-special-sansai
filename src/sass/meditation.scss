@@ -46,6 +46,7 @@
   flex-direction: row;
   align-items: center;
   width: get-vw(1330px, 1440);
+  height: 100%;
   margin-left: auto;
   margin-right: auto;
 
@@ -311,10 +312,9 @@
     }
     #seekslider::-webkit-slider-thumb {
       -webkit-appearance: none !important;
-      background: #ffffff;
-      width: get-vw(6px, 1440);
+      background: none;
+      width: get-vw(1px, 1440);;
       height: get-vw(6px, 1440);
-      border-radius: 0 get-vw(100px, 1440) get-vw(100px, 1440) 0;
       cursor: pointer;
     }
     .post__seekslider__indicator{
@@ -325,7 +325,7 @@
       height: get-vw(6px, 1440);
       background-color: #FFFFFF;
       width: 0%;
-      border-radius: get-vw(100px, 1440) 0 0 get-vw(100px, 1440) ;
+      border-radius: get-vw(100px, 1440) ;
       z-index: 1;
       cursor: pointer;
     }

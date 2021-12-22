@@ -40,39 +40,12 @@
       itemsToStartMeditation = [
         ...postContainer.querySelectorAll('.startMeditation'),
       ];
-    let backgroundVideo = document.getElementById('background-video');
     let preloadText = document.querySelector('.preloader-percent');
     let preloaderBlock = document.querySelector('.preloader-indicator');
 
 
 
-    backgroundVideo.onprogress = function() {
-      switch(backgroundVideo.readyState){
-        case 0:
-          preloadText.innerHTML = "0%";
-          break;
-        case 1:
-          preloadText.innerHTML = "25%";
-          break;
-        case 2:
-          preloadText.innerHTML = "50%";
-          break;
-        case 3:
-          preloadText.innerHTML = "75%";
-          break;
-        case 4:
-          preloadText.innerHTML = "100%";
-          preloaderBlock.classList.add("invicible-indicator");
-          menuContainer.classList.remove('preloaded-for-meditations');
-          break;
-      }
-    };
 
-    backgroundVideo.onloadeddata = function(){
-      preloadText.innerHTML = "100%";
-      preloaderBlock.classList.add("invicible-indicator");
-      menuContainer.classList.remove('preloaded-for-meditations');
-    }
 
     itemsToOpenLandingMeditation.forEach((itemToOpenLandingMeditation) => {
       configOfEventListeners(false, {
@@ -135,6 +108,13 @@
     function goToMeditationLanding(event) {
       let target = event.currentTarget,
         target__index = target.getAttribute('data-meditation-index');
+        
+        let audio = audios[target__index];
+        let playBtn = playbtns[target__index];
+          audio.currentTime = 0;
+          playBtn.style.background = 'url(https://cdn.the-village.ru/the-village.ru/2021/12/17/playbtn_1.svg) center no-repeat';
+          playBtn.style.backgroundSize = '100% 100%';
+          seeksliderCovers[target__index].style.width = "0%";
 
       menuContainer.classList.add('openMeditation');
       meditationsContainer.classList.remove('endMeditation');
@@ -191,10 +171,14 @@
       }
     }
     function back(event) {
-      let target = event.currentTarget,
+      let target = event.currentTarget;
         target__index = target.getAttribute('data-audio-index');
       let audio = audios[target__index];
-
+      let playBtn = playbtns[target__index];
+        audio.currentTime = 0;
+        playBtn.style.background = 'url(https://cdn.the-village.ru/the-village.ru/2021/12/17/playbtn_1.svg) center no-repeat';
+        playBtn.style.backgroundSize = '100% 100%';
+        seeksliderCovers[target__index].style.width = "0%";
       audio.pause();
       meditationsContainer.classList.remove('startMeditation');
       menuContainer.classList.remove('openMeditation');
@@ -221,7 +205,6 @@
         target__duration = target.duration;
 
       let neededValueForInput = (target__currentTime * 100) / target__duration;
-      let sliderLength = document.querySelector('.post__seekslider__indicator');
       seeksliders[target__index].value = neededValueForInput;
       seeksliderCovers[target__index].style.width = seeksliders[target__index].value + "%";
       showSubs(target__index);
@@ -267,10 +250,10 @@
       });
 
 
-      let percentOfLoad = Math.trunc(loadedItems * 100 / itemsToLoad);
+      let percentOfLoad = Math.trunc(loadedItems * 100 / itemsToLoad) + "%";
 
 
-      if(percentOfLoad == 100){
+      if(percentOfLoad == "100%"){
         preloaderBlock.classList.add("invicible-indicator");
         menuContainer.classList.remove('preloaded-for-meditations');
       }
