@@ -122,7 +122,7 @@
         left: get-vw(65px, 1440);
 
         outline: none;
-        border: 1px solid #ffffff;
+        border: get-vw(1px, 1440) solid #ffffff;
         box-sizing: border-box;
         border-radius: 100px;
         background: none;
@@ -136,6 +136,13 @@
         text-transform: uppercase;
 
         color: #ffffff;
+        
+        .listen-meditation-text{
+          display: block;
+        }
+        .listen-meditation-text-again{
+          display: none;
+        }
       }
     }
     .music-player-content__block:nth-child(4) {
@@ -158,4 +165,141 @@
 }
 .preloaded-for-meditations{
   display: none;
+}
+
+@media (max-width: 650px) {
+  .music-player__block {
+    width: 100%;
+
+
+    .music-player-header {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .music-player-header-text {
+        position: relative;
+        margin-top: get-vw(34px, 320);
+        margin-bottom: get-vw(33px, 320);
+
+        line-height: get-vw(13px, 320);
+        letter-spacing: get-vw(1px, 320);
+        text-transform: uppercase;
+
+        font-size: get-vw(12px, 320);
+        font-weight: normal;
+        text-align: center;
+      }
+      .music-player-header-text::before {
+        display: block;
+        text-align: center;
+
+        top: get-vw(-10px, 320);
+        left: get-vw(-60px, 320);
+        position: absolute;
+
+        content: '';
+        height: get-vw(30px, 320);
+        width: get-vw(30px, 320);
+        background-repeat: no-repeat;
+        background-size: get-vw(30px, 320) get-vw(30px, 320);
+        background-image: url(https://cdn.the-village.ru/the-village.ru/2021/12/15/music-block__icon.svg);
+      }
+      .music-player-header-text::after {
+        display: block;
+        text-align: center;
+
+        top: get-vw(-10px, 320);
+        right: get-vw(-60px, 320);
+        position: absolute;
+
+        content: '';
+        height: get-vw(30px, 320);
+        width: get-vw(30px, 320);
+        background-repeat: no-repeat;
+        background-size: get-vw(30px, 320) get-vw(30px, 320);
+        background-image: url(https://cdn.the-village.ru/the-village.ru/2021/12/15/music-block__icon.svg);
+      }
+    }
+    .music-player-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .music-player-content__block {
+
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: get-vw(358px, 320);
+
+        border-top: get-vw(1px, 320) solid #ffffff;
+        border-bottom: get-vw(1px, 320) solid #ffffff;
+
+        .music-player-content-block-number {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+          position: static;
+          width: get-vw(40px, 320);
+          height: get-vw(40px, 320);
+
+          line-height: get-vw(36px, 320);
+          text-align: center;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          font-family: var(--font-alt);
+          border: 1px solid #ffffff;
+          border-radius: get-vw(100px, 320);
+        }
+        .music-name {
+          margin-top: get-vw(25px, 320);
+          margin-bottom: get-vw(25px, 320);
+          text-align: center;
+
+          font-weight: 500;
+          font-size: get-vw(20px, 320);
+          line-height: get-vw(26px, 320);
+        }
+
+        .finish-text {
+          display: none;
+        }
+        .music-length {
+          line-height: get-vw(14px, 320);
+          font-size: get-vw(12px, 320);
+          text-transform: uppercase;
+
+        }
+        .music__button {
+          width: get-vw(201px, 320);
+          height: get-vw(50px, 320);
+          position: static;
+          margin-top: get-vw(50px, 320);
+
+
+          outline: none;
+          border: get-vw(1px, 320) solid #ffffff;
+          box-sizing: border-box;
+          border-radius: 100px;
+          background: none;
+
+          font-weight: 500;
+          font-size: get-vw(10px, 320);
+          line-height: get-vw(36px, 320);
+
+          text-align: center;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+
+          color: #ffffff;
+        }
+      }
+    }
+  }
 }

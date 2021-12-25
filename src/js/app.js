@@ -2,7 +2,7 @@
   //= include '_base.js'
 
   if (document.readyState === 'loading') {
-    //Так как события LOCATION/PAGE_READY на обычном локолхосте нет, мы его эмулируем с помощью события load
+
     !window.location.href.includes('localhost')
       ? configOfEventListeners(false, {
           target: window,
@@ -14,18 +14,15 @@
           type: 'load',
           func: initJs,
         });
-    //END
   } else {
     initJs();
   }
 
   function initJs() {
-    // Тут начинается твой js-код
     let postContainer = document.querySelector('.startContainer');
 
     let menuContainer = document.querySelector('.menuContainer'),
-      meditationsContainer = document.querySelector('.meditationsContainer'),
-      finalContainer = document.querySelector('.finalContainer');
+      meditationsContainer = document.querySelector('.meditationsContainer');
     let audios = [...postContainer.querySelectorAll('.post__audio')];
 
     let playbtns = [...postContainer.querySelectorAll('.post__playpausebtn')],
@@ -43,9 +40,12 @@
     let preloadText = document.querySelector('.preloader-percent');
     let preloaderBlock = document.querySelector('.preloader-indicator');
 
+    let mainPageVideo = document.querySelector('.main-page-video-cover');
+    let meditationMusicPlayer  = document.querySelector('.meditationMusicPlayer');
 
-
-
+    if(document.documentElement.clientWidth <= 650){
+      mainPageVideo.src = "https://player.vimeo.com/video/659259193?h=24c17f6c4d";
+    }
 
     itemsToOpenLandingMeditation.forEach((itemToOpenLandingMeditation) => {
       configOfEventListeners(false, {
@@ -64,12 +64,11 @@
     });
 
     playbtns.forEach((playbtn) => {
-      // playbtn.addEventListener("click", playPause);
       configOfEventListeners(false, {
         target: playbtn,
         type: 'click',
         func: playPause,
-      }); // вешаем ивентлистнер правильно
+      });
     });
 
     mutebtns.forEach((mutebtn) => {
@@ -104,11 +103,10 @@
       });
     });
 
-    // Контрлим переход к посадочной странице медитации
     function goToMeditationLanding(event) {
       let target = event.currentTarget,
         target__index = target.getAttribute('data-meditation-index');
-        
+
         let audio = audios[target__index];
         let playBtn = playbtns[target__index];
           audio.currentTime = 0;
@@ -120,31 +118,28 @@
       meditationsContainer.classList.remove('endMeditation');
 
       meditationsContainer.setAttribute('data-meditation', target__index);
+      meditationsContainer.scrollIntoView();
     }
-    // END
-    // Контролим переход с самой странице медитации
     function startMeditation(event) {
       meditationsContainer.classList.add('startMeditation');
+      meditationsContainer.scrollIntoView();
     }
     function finishMeditation(event){
       meditationsContainer.classList.add('endMeditation');
       meditationsContainer.classList.remove('startMeditation');
     }
-    // END
 
     function playPause(event) {
       let target = event.currentTarget,
-        target__index = target.getAttribute('data-audio-index'); // У каждой кнопки плея в дата аттрибуте лежит индекс аудио за которое она отвечает
+        target__index = target.getAttribute('data-audio-index');
 
       let audio = audios[target__index];
-     // console.log(target, audio, audios);
 
       if (audio.paused) {
         audio.play();
         target.style.background =
           'url(https://cdn.the-village.ru/the-village.ru/2021/12/17/pausebtn_0.svg) center no-repeat';
         target.style.backgroundSize = '100% 100%';
-        // END
       } else {
         audio.pause();
         target.style.background =
@@ -193,14 +188,11 @@
       let neededCurrentTime = audio__duration * (target__value / 100);
 
       audio.currentTime = neededCurrentTime;
-      console.log("audio.currentTime: " + audio.currentTime);
-      console.log("target__value: " + target__value);
     }
 
     function seektimeupdate(event) {
       let target = event.currentTarget,
         target__index = audios.indexOf(target);
-      // Тут собираем инфу для изменения инпута по мере прослушивания
       let target__currentTime = target.currentTime,
         target__duration = target.duration;
 
@@ -262,7 +254,6 @@
     }
 
     function showSubs(indexOfAudio) {
-      // В этой функции мы настраиваем отоюражение субтитров
       let audio = audios[indexOfAudio],
         audio__currentTime = audio.currentTime;
         audio__duration = audio.duration;
@@ -376,8 +367,6 @@
               break;
 
             default:
-              //console.log(subsContainer.children[currentIndexOfSub-1]);
-             // setTimeout("currentIndexOfSub = 0", 500);
               break;
           };
           break;
@@ -499,7 +488,6 @@
               break;
 
             default:
-              console.log(audio__currentTime);
               currentIndexOfSub = 0;
               break;
           };
@@ -604,7 +592,6 @@
                 finishMeditation();
 
               default:
-                console.log(audio__currentTime);
                 currentIndexOfSub = 0;
                 break;
             };
@@ -742,7 +729,6 @@
               break;
 
             default:
-              console.log(audio__currentTime);
               currentIndexOfSub = 0;
               break;
           };
@@ -759,7 +745,6 @@
     func: destroyJs,
   });
   function destroyJs() {
-    // Удаляем все ивенты
     configOfEventListeners(true, true);
   }
 })();

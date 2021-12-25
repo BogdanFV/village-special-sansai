@@ -1,0 +1,199 @@
+.startContainer {
+  display: block;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  width: 100%;
+  height: auto;
+
+  overflow: hidden;
+
+  z-index: 2;
+  .startContainer__wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    width: 100%;
+    height: auto;
+
+    position: relative;
+
+    .page-cover {
+      flex-direction: column;
+      width: 100%;
+
+      color: #ffffff;
+      background-color: #1a1919;
+
+      font-style: normal;
+      font-weight: normal;
+      font-family: var(--font-alt);
+
+      .standart-text__block {
+        font-size: get-vw(18px, 320);
+        line-height: get-vw(26px, 320);
+
+        margin-bottom: get-vw(54px, 320);
+        margin-top: get-vw(27px, 320);
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+
+        .sensai-link{
+          color: #ffffff;
+        }
+      }
+
+      .second-text__block{
+        margin-bottom: get-vw(122px, 320);
+      }
+
+      .content-cover {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+        border: get-vw(1px, 320) solid #ffffff;
+        .video {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          box-sizing: border-box;
+          object-fit: cover;
+        }
+
+        @import 'preloader';
+
+        @import 'menu';
+
+        @import 'meditation';
+
+        @import 'additional';
+      }
+
+      .gel-wash-picture-cover {
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: get-vw(181px, 320);
+        border: get-vw(1px, 320) solid #FFFFFF;
+        background-size: cover;
+        width: get-vw(223px, 320);
+        height: get-vw(397px, 320);
+
+        .main-page-video-cover{
+          height: 100%;
+          width: 100%;
+        }
+      }
+      .gel-wash-picture-cover::before {
+        top: -20%;
+        left: get-vw(93px, 320);
+        content: '';
+        height: get-vw(47px, 320);
+        width: get-vw(37px, 320);
+        position: absolute;
+        background: url(https://cdn.the-village.ru/the-village.ru/2021/12/15/gel-wash-icon.svg)
+          no-repeat;
+        background-size: cover;
+      }
+      .gel-wash-picture-cover::after {
+        top: 110%;
+        left: get-vw(93px, 320);
+        content: '';
+        height: get-vw(47px, 320);
+        width: get-vw(37px, 320);
+        position: absolute;
+        background: url(https://cdn.the-village.ru/the-village.ru/2021/12/15/gel-wash-icon.svg)
+          no-repeat;
+        background-size: cover;
+      }
+      .carousel-cover{
+        position: relative;
+        width: 90%;
+        margin:auto;
+        margin-bottom: get-vw(100px, 320);
+        .block__button{
+          width: 95%;
+        }
+        .swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
+          bottom: get-vw(500px, 320);
+          color: #FFFFFF;
+        }
+        .swiper-pagination-bullet{
+          background-color: #FFFFFF;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev{
+          width: get-vw(20px, 320);
+          height: get-vw(38px, 320);
+          top: 30%;
+        }
+
+        .swiper-button-next::after,
+        .swiper-button-prev::after{
+          color: #1a1919;
+          width: get-vw(20px, 320);
+          height: get-vw(38px, 320);
+          font-size: get-vw(38px, 320);
+        }
+        .block__button button{
+          width: 95%;
+          height: get-vw(55px, 320);
+          border-radius: get-vw(100px, 320);
+        }
+      }
+      .footer-logo-block{
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: get-vw(43px, 320);
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+
+        text-align: center;
+        background-color: #ffffff;
+
+        .additional-footer-text{
+          display: flex;
+          align-items: center;
+          text-align: center;
+
+          font-weight: 300;
+          font-size: get-vw(16px, 320);
+          line-height: get-vw(22px, 320);
+          width: get-vw(180px, 320);
+          /* or 137% */
+
+          letter-spacing: get-vw(-0.12px, 320);
+          color: #909090;
+        }
+        a{
+          padding-left: get-vw(50px, 320);
+          width: get-vw(218px, 320);
+
+          .footer-logo{
+            margin-bottom: get-vw(53px, 320);
+            margin-right: get-vw(-20px, 320);
+            height: get-vw(75px, 320);
+            width: 100%;
+
+            .footer-logo img{
+              width: 100%;
+              height: get-vw(75px, 320);
+            }
+          }
+        }
+      }
+    }
+  }
+}

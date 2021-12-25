@@ -77,7 +77,7 @@
         margin-left: auto;
         margin-right: auto;
         margin-bottom: get-vw(120.56px, 1440);
-        border: none;
+        border: get-vw(1px, 1440) solid #FFFFFF;
         background-size: cover;
         width: get-vw(960px, 1440);
         height: get-vw(540.44px, 1440);
@@ -114,33 +114,49 @@
         width:get-vw(1260px, 1440);
         margin:auto;
         margin-bottom: get-vw(100px, 1440);
+
+        .swiper-button-prev, .swiper-rtl .swiper-button-next{
+          left: get-vw(25px, 1440);
+        }
+        .swiper-button-next, .swiper-rtl .swiper-button-prev{
+          right: get-vw(25px, 1440);
+        }
+
       }
       .footer-logo-block{
 
         display: flex;
         flex-direction: column;
         align-items: center;
-        text-align: center;
-        justify-content: center;
+        justify-content: flex-start;
         padding-top: get-vw(100px, 1440);
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+
+        text-align: center;
         background-color: #ffffff;
 
         .additional-footer-text{
+          display: flex;
+          align-items: center;
+          text-align: center;
+
           font-weight: 300;
           font-size: get-vw(16px, 1440);
           line-height: get-vw(22px, 1440);
-          width: get-vw(220px, 1440);
+          width: get-vw(180px, 1440);
           /* or 137% */
 
-          letter-spacing: get-vw(-0.123077px, 1440);
+          letter-spacing: get-vw(-0.12px, 1440);
           color: #909090;
         }
         .footer-logo{
-          margin-top: get-vw(13px, 1440);
           margin-bottom: get-vw(119px, 1440);
+          margin-right: get-vw(-100px, 1440);
 
-          width: get-vw(235px, 1440);
-          height: get-vw(50px, 1440);
+          width: get-vw(279px, 1440);
+          height: get-vw(96px, 1440);
         }
       }
     }

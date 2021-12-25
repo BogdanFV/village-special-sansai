@@ -28,7 +28,7 @@
       height: get-vw(50px, 1440);
 
       outline: none;
-      border: 1px solid #ffffff;
+      border: get-vw(1px, 1440) solid #ffffff;
       box-sizing: border-box;
       border-radius: 100px;
       background: none;
@@ -42,6 +42,13 @@
       text-transform: uppercase;
 
       color: #ffffff;
+
+      .listen-meditation-text{
+        display: none;
+      }
+      .listen-meditation-text-again{
+        display: block;
+      }
     }
     .music__button:hover{
       background-color: #ffffff;
@@ -162,7 +169,7 @@
         left: get-vw(122px, 1440);
 
         outline: none;
-        border: 1px solid #ffffff;
+        border: get-vw(1px, 1440) solid #ffffff;
         box-sizing: border-box;
         border-radius: 100px;
         background: none;
@@ -177,6 +184,187 @@
         text-transform: uppercase;
 
         color: #ffffff;
+
+        .listen-meditation-text{
+          display: block;
+        }
+        .listen-meditation-text-again{
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .additionalContainer{
+
+    position: relative;
+
+    .music-player-content__block{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      height: auto;
+
+      .music-player-content-block-number{
+        display: none;
+      }
+      .music-name {
+        display: none;
+      }
+      .music__button{
+        width: get-vw(201px, 320);
+        height: get-vw(50px, 320);
+        margin-bottom: get-vw(50px, 320);
+
+        outline: none;
+        border: get-vw(1px, 320) solid #ffffff;
+        box-sizing: border-box;
+        border-radius: 100px;
+        background: none;
+
+        font-weight: 500;
+        font-size: get-vw(10px, 320);
+        line-height: get-vw(36px, 320);
+
+        text-align: center;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+
+        color: #ffffff;
+      }
+      .music__button:hover{
+        background-color: #ffffff;
+        color: #1a1919;
+        cursor: pointer;
+      }
+      .music-length{
+        display: none;
+      }
+      .music-player-icon {
+        display: block;
+        text-align: center;
+        content: '';
+        height: get-vw(30px, 320);
+        width: get-vw(30px, 320);
+        margin-top: get-vw(30px, 320);
+
+        background-repeat: no-repeat;
+        background-size: get-vw(30px, 320) get-vw(30px, 320);
+        background-image: url(https://cdn.the-village.ru/the-village.ru/2021/12/15/music-block__icon.svg);
+      }
+      .finish-text{
+        display: block;
+        width: auto;
+
+        margin-top: get-vw(25px, 320);
+        margin-bottom: get-vw(50px, 320);
+        margin-left: get-vw(23px, 320);
+        margin-right: get-vw(23px, 320);
+        text-align: center;
+
+        font-weight: 400;
+        font-size: get-vw(20px, 320);
+        line-height: get-vw(26px, 320);
+      }
+    }
+
+    .additional-meditations__block{
+      display: flex;
+      flex-direction: column;
+      height: auto;
+      width: 100%;
+
+      .music-player-content__block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: auto;
+        position: static;
+
+        border-top: 1px solid #ffffff;
+
+        .music-player-content-block-number {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          margin-top: get-vw(50px, 320);
+
+          position: static;
+
+
+          top: get-vw(30px, 320);
+          left: get-vw(192px, 320);
+          width: get-vw(40px, 320);
+          height: get-vw(40px, 320);
+
+          font-size: get-vw(13px, 320);
+          line-height: get-vw(36px, 320);
+          text-align: center;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          border: 1px solid #ffffff;
+          border-radius: get-vw(100px, 320);
+        }
+        .music-name {
+          display: block;
+          width: 80%;
+          height: auto;
+
+          margin-top: get-vw(25px, 320);
+          margin-bottom: get-vw(25px, 320);
+
+          font-weight: 500;
+          font-size: get-vw(20px, 320);
+          line-height: get-vw(26px, 320);
+          text-align: center;
+
+        }
+        .finish-text{
+          display: none;
+        }
+        .music-player-icon{
+          display: none;
+        }
+        .music-length {
+          display: block;
+          margin-bottom: get-vw(50px, 320);
+
+          line-height: get-vw(14px, 320);
+          font-size: get-vw(13px, 320);
+        }
+        .music__button {
+          width: get-vw(201px, 320);
+          height: get-vw(50px, 320);
+
+          position: static;
+
+          bottom: get-vw(30px, 320);
+          left: get-vw(122px, 320);
+
+          outline: none;
+          border: get-vw(1px, 320) solid #ffffff;
+          box-sizing: border-box;
+          border-radius: 100px;
+          background: none;
+          cursor: pointer;
+
+          font-weight: 500;
+          font-size: get-vw(10px, 320);
+          line-height: get-vw(36px, 320);
+
+          text-align: center;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+
+          color: #ffffff;
+        }
       }
     }
   }

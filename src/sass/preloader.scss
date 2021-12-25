@@ -39,3 +39,42 @@
 .invicible-indicator{
   display: none;
 }
+
+@media (max-width: 650px) {
+  .preloader-indicator{
+    height: 100%;
+    width: 100%;
+    padding-top: get-vw(129px, 320);
+    padding-bottom: get-vw(129px, 320); 
+    /* identical to box height, or 83% */
+    justify-content: center;
+    position: relative;
+
+    .preloader-percent{
+      margin-top: get-vw(40px, 320);
+      margin-bottom: get-vw(40px, 320);
+      height: 100%;
+
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke-width: get-vw(1px, 320);
+      -webkit-text-stroke-color: #FFFFFF;
+      font-family: var(--font-main);
+      font-style: normal;
+      font-size: get-vw(60px, 320);
+      line-height: get-vw(60px, 320);
+    }
+    .music-player-icon{
+      text-align: center;
+      content: '';
+      height: get-vw(30px, 320);
+      width: get-vw(30px, 320);
+      background-repeat: no-repeat;
+      background-size: get-vw(30px, 320) get-vw(30px, 320);
+      background-image: url(https://cdn.the-village.ru/the-village.ru/2021/12/15/music-block__icon.svg);
+    }
+  }
+  .invicible-indicator{
+    display: none;
+  }
+
+}
